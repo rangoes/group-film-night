@@ -96,7 +96,7 @@ def compact_key(value: str) -> str:
     lowered = ascii_value.strip().lower()
     lowered = re.sub(r"\[[^\]]+\]", "", lowered)
     lowered = re.sub(r"\(\d{4}\)", "", lowered)
-    lowered = lowered.replace("‚Äô", "").replace("'", "")
+    lowered = lowered.replace("’", "").replace("'", "")
     lowered = re.sub(r"[^a-z0-9]+", "", lowered)
     return lowered or "item"
 
@@ -598,7 +598,7 @@ def candidate_reason(candidate: Dict[str, Any]) -> str:
     if rt is not None:
         parts.append(f"{rt}% RT")
     parts.append(candidate.get("serviceLabel") or service_label(candidate.get("service", "")))
-    return " ¬∑ ".join(parts)
+    return " · ".join(parts)
 
 
 def shortlist_candidates(state: Dict[str, Any], attendee_ids: List[str], limit: int = 5) -> List[Dict[str, Any]]:
@@ -724,7 +724,7 @@ def create_session(state: Dict[str, Any], attendee_ids: List[str], scheduled_for
             unique_ids.append(attendee_id)
             seen_ids.add(attendee_id)
     if not unique_ids:
-        raise ValueError("Bitte mindestens einen Teilnehmer ausw√§hlen.")
+        raise ValueError("Bitte mindestens einen Teilnehmer auswählen.")
     for attendee_id in unique_ids:
         if not participant_by_id(state, attendee_id):
             raise ValueError(f"Unbekannter Teilnehmer: {attendee_id}")
@@ -818,7 +818,7 @@ def reveal_next(state: Dict[str, Any]) -> Dict[str, Any]:
         raise ValueError("Es gibt aktuell keine aktive Session.")
     ranking = session.get("ranking") or build_auto_ranking(session.get("candidates", []))
     if session.get("revealedCount", 0) >= len(ranking):
-        raise ValueError("Alle Pl√§tze wurden bereits revealed.")
+        raise ValueError("Alle Plätze wurden bereits revealed.")
     session["revealedCount"] = session.get("revealedCount", 0) + 1
     save_state(state)
     return session
