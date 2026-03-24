@@ -1848,6 +1848,3665 @@
         aliases: ["marius"],
         role: "Host",
         arc: "Heroischer Lead",
+        bio: "Captain und Initiator der Mission. Marius sorgt daf√ºr, dass das Schiff √ºberhaupt abhebt und der Abend zuverl√§ssig ins Weltall kommt.",
+        image: `/assets/dashboard/crew-unified/marius-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+        host: true,
+      },
+      {
+        key: "kathi",
+        name: "Kathi",
+        aliases: ["kathi", "katja"],
+        role: "Host",
+        arc: "Strategische Co-Lead",
+        bio: "H√§lt das Niveau oben, bringt Geschmack in die Auswahl und sorgt zuverl√§ssig daf√ºr, dass am Ende nicht versehentlich kompletter Quatsch auf der Leinwand landet.",
+        image: `/assets/dashboard/crew-unified/kathi-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+        host: true,
+      },
+      {
+        key: "ramin",
+        name: "Ramin",
+        aliases: ["ramin"],
+        role: "Crew",
+        arc: "Charmanter Rogue",
+        bio: "Fast immer am Start und notfalls auch quer durch die Galaxie unterwegs, nur um rechtzeitig zur n√§chsten Movie Night wieder vorbeizufliegen.",
+        image: `/assets/dashboard/crew-unified/ramin-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+      },
+      {
+        key: "sebastian",
+        name: "Sebastian",
+        aliases: ["sebastian", "boehn", "boehn", "b√∂hn", "ben"],
+        role: "Crew",
+        arc: "Loyaler Wingman",
+        bio: "Taucht nicht f√ºr jeden Titel auf. Wenn Sebastian zusagt, dann nur f√ºr sehr bewusst ausgew√§hlte Filme mit echtem Potenzial.",
+        image: `/assets/dashboard/crew-unified/sebastian-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+        portraitShift: "0",
+      },
+      {
+        key: "mirko",
+        name: "Mirko",
+        aliases: ["mirko"],
+        role: "Crew",
+        arc: "Mentor mit Sondergenehmigung",
+        bio: "Gerade am anderen Ende der Galaxie unterwegs. Meldet sich nur f√ºr seltene Gastauftritte, dann aber sofort mit Sonderstatus im Cast.",
+        image: `/assets/dashboard/crew-unified/mirko-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+        portraitShift: "0",
+      },
+      {
+        key: "flo",
+        name: "Flo",
+        aliases: ["flo", "florian"],
+        role: "Crew",
+        arc: "Comic Relief",
+        bio: "Nicht immer im Cast, aber wenn Flo auftaucht, bringt er sofort Snack-Energie, Tempo und exakt das richtige Ma√ü an Comic Relief mit.",
+        image: `/assets/dashboard/crew-unified/flo-card.png${crewImageVersion}`,
+        portraitPosition: "center bottom",
+        portraitFit: "contain",
+        portraitPadding: "0",
+        portraitScale: "1",
+        portraitShift: "0",
+      },
+    ];
+    const previewCrewStats = {
+      marius: { attendancePercent: 100, nights: 8, likes: 11, seen: 4, dislikes: 1, activeTonight: true },
+      kathi: { attendancePercent: 100, nights: 8, likes: 9, seen: 3, dislikes: 0, activeTonight: true },
+      ramin: { attendancePercent: 75, nights: 6, likes: 8, seen: 2, dislikes: 1, activeTonight: true },
+      sebastian: { attendancePercent: 88, nights: 7, likes: 6, seen: 1, dislikes: 0, activeTonight: true },
+      mirko: { attendancePercent: 50, nights: 4, likes: 5, seen: 1, dislikes: 1, activeTonight: false },
+      flo: { attendancePercent: 38, nights: 3, likes: 4, seen: 1, dislikes: 0, activeTonight: true },
+    };
+    const previewComments = [
+      {
+        id: "comment-preview-1",
+        participantName: "Flo",
+        text: "Ich bringe Nachos, aber nur wenn niemand wieder einen 170-Minuten-Film anschleppt.",
+        createdAt: "2026-03-22T17:10:00+01:00",
+        sessionId: "preview-session",
+      },
+      {
+        id: "comment-preview-2",
+        participantName: "Kathi",
+        text: "Bitte diesmal was mit gutem Pace. Und ja, Popcorn ist bereits mitgedacht.",
+        createdAt: "2026-03-22T17:02:00+01:00",
+        sessionId: "preview-session",
+      },
+      {
+        id: "comment-preview-3",
+        participantName: "Sebastian",
+        text: "Ich f√ºhle mich f√ºr Bier und strukturierte Abstimmung verantwortlich.",
+        createdAt: "2026-03-22T16:48:00+01:00",
+        sessionId: "preview-session",
+      },
+    ];
+    const previewSnackAssignments = {
+      nachos: ["Flo"],
+      chips: ["Ramin"],
+      schokolade: ["Kathi"],
+      eis: [],
+      bier: ["Sebastian", "Marius"],
+      sonstiges: ["Mirko"],
+    };
+    const previewParticipants = ["Marius", "Kathi", "Ramin", "Sebastian", "Mirko", "Flo"];
+    const starterCrewNames = [...new Set(crewMembers.map((member) => member.name))];
+    const previewSessionCandidates = [
+      { title: "Automatischer Konsens-Pick", serviceLabel: "Beispiel", reason: "Sobald feststeht, wer heute dabei ist, sucht das System zuerst nach dem st√§rksten gemeinsamen Match.", image: "" },
+      { title: "Starker Gruppen-Match", serviceLabel: "Beispiel", reason: "Wenn es keinen perfekten Konsens gibt, rutscht der Titel mit dem besten Fit f√ºr diese Runde nach vorne.", image: "" },
+      { title: "Solider Backup-Pick", serviceLabel: "Beispiel", reason: "Falls der erste Pick spontan rausf√§llt, steht direkt ein sinnvoller Ersatz bereit.", image: "" },
+    ];
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function formatDate(value) {
+      if (!value) {
+        return "Noch nie";
+      }
+      try {
+        return new Date(value).toLocaleString("de-DE", {
+          day: "2-digit",
+          month: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      } catch {
+        return value;
+      }
+    }
+
+    function defaultSessionDate() {
+      const today = new Date();
+      const local = new Date(today.getTime() - today.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0, 10);
+    }
+
+    function formatSessionDate(value) {
+      if (!value) {
+        return "Heute Abend";
+      }
+      try {
+        return new Date(`${value}T12:00:00`).toLocaleDateString("de-DE", {
+          weekday: "long",
+          day: "2-digit",
+          month: "2-digit",
+        });
+      } catch {
+        return value;
+      }
+    }
+
+    function youtubeTrailerUrl(title) {
+      const query = encodeURIComponent(`${title || ""} trailer`);
+      return `https://www.youtube.com/results?search_query=${query}`;
+    }
+
+    function snackIcon(snackId) {
+      return {
+        nachos: "üßÄ",
+        chips: "ü•î",
+        schokolade: "üç´",
+        eis: "üç¶",
+        bier: "üç∫",
+        sonstiges: "üéí",
+      }[String(snackId || "").toLowerCase()] || "üçø";
+    }
+
+    function rottenTomatoesUrl(film) {
+      const direct = film && film.rt && film.rt.url;
+      if (direct) {
+        return direct;
+      }
+      const query = encodeURIComponent(film && film.title ? film.title : "");
+      return `https://www.rottentomatoes.com/search?search=${query}`;
+    }
+
+    function currentViewerToken() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("viewer") || "";
+    }
+
+    function apiUrl(path) {
+      const token = currentViewerToken();
+      if (!token) {
+        return path;
+      }
+      const separator = path.includes("?") ? "&" : "?";
+      return `${path}${separator}viewer=${encodeURIComponent(token)}`;
+    }
+
+    function hasViewerLink() {
+      return !!stateStore.viewerParticipantId;
+    }
+
+    function isViewerHost() {
+      return !!stateStore.viewerIsHost;
+    }
+
+    function identitySelected() {
+      return hasViewerLink();
+    }
+
+    function requiresIdentity(state) {
+      return !!(((state && state.participants) || []).length);
+    }
+
+    function interactionHint(state, hostOnly = false) {
+      if (!requiresIdentity(state)) {
+        return "Lege zuerst die Crew an.";
+      }
+      if (!identitySelected()) {
+        return "Waehle oben zuerst deinen Namen oder tritt als Gast bei.";
+      }
+      if (hostOnly && !isViewerHost()) {
+        return "Das duerfen nur Hosts.";
+      }
+      return "";
+    }
+
+    function joinPathForParticipant(state, participantId) {
+      const links = state && state.joinLinks ? state.joinLinks : [];
+      const match = links.find((entry) => entry.participantId === participantId);
+      return match ? match.path : "";
+    }
+
+    function normalizePersonKey(value) {
+      return String(value || "")
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "");
+    }
+
+    function crewMemberForName(name) {
+      const normalized = normalizePersonKey(name);
+      return crewMembers.find((member) =>
+        [member.key, member.name, ...(member.aliases || [])]
+          .map(normalizePersonKey)
+          .includes(normalized)
+      ) || null;
+    }
+
+    function crewMetrics(state) {
+      const participants = state.participants || [];
+      const preferences = state.preferences || {};
+      const history = state.sessionHistory || [];
+      const session = state.currentSession;
+      const participantByCrewKey = new Map();
+
+      participants.forEach((participant) => {
+        const member = crewMemberForName(participant.name);
+        if (member && !participantByCrewKey.has(member.key)) {
+          participantByCrewKey.set(member.key, participant);
+        }
+      });
+
+      return crewMembers.map((member) => {
+        const participant = participantByCrewKey.get(member.key);
+        const prefEntries = participant ? Object.values(preferences[participant.id] || {}) : [];
+        const likes = prefEntries.filter((entry) => entry && entry.reaction === "like").length;
+        const seen = prefEntries.filter((entry) => entry && entry.reaction === "seen").length;
+        const dislikes = prefEntries.filter((entry) => entry && entry.reaction === "dislike").length;
+        const nights = history.filter((entry) =>
+          (entry.attendees || []).some((attendee) => normalizePersonKey(attendee) === member.key)
+        ).length;
+        const totalNights = history.length;
+        const preview = (!totalNights && !participants.length) ? previewCrewStats[member.key] || null : null;
+        const attendancePercent = member.host
+          ? 100
+          : totalNights
+            ? Math.round((nights / totalNights) * 100)
+            : (preview ? preview.attendancePercent : 0);
+        const activeTonight = !!(session && (session.attendees || []).some((attendee) =>
+          normalizePersonKey(attendee.name) === member.key
+        ));
+        return {
+          ...member,
+          participant,
+          likes: preview ? preview.likes : likes,
+          seen: preview ? preview.seen : seen,
+          dislikes: preview ? preview.dislikes : dislikes,
+          nights: preview ? preview.nights : nights,
+          attendancePercent,
+          activeTonight: preview ? preview.activeTonight : activeTonight,
+        };
+      });
+    }
+
+    function crewStatusLabel(member, totalArchivedNights) {
+      if (member.host) {
+        return { label: "Host", tone: "host" };
+      }
+      if (member.attendancePercent >= 80) {
+        return { label: "Familienmitglied", tone: "host" };
+      }
+      if (member.attendancePercent >= 60) {
+        return { label: "Br√ºcken-Crew", tone: "" };
+      }
+      if (member.attendancePercent >= 50) {
+        return { label: "Stammgast", tone: "" };
+      }
+      if (member.attendancePercent >= 30) {
+        return { label: "S√∂ldner", tone: "" };
+      }
+      if (member.attendancePercent > 0) {
+        return { label: "Verschollen am Rand der Galaxie", tone: "warn" };
+      }
+      return { label: "Noch im Hyperraum", tone: "" };
+    }
+
+    function heroCastHtml() {
+      const byKey = new Map(crewMembers.map((member) => [member.key, member]));
+      const slots = [
+        { key: "marius", cls: "main-left" },
+        { key: "kathi", cls: "main-right" },
+        { key: "mirko", cls: "support-left" },
+        { key: "flo", cls: "support-right" },
+      ];
+      return `
+        <div class="hero-cast">
+          <div class="hero-orbit"></div>
+          ${slots.map((slot) => {
+            const member = byKey.get(slot.key);
+            if (!member) {
+              return "";
+            }
+            return `
+              <figure class="hero-portrait ${slot.cls}">
+                <img src="${escapeHtml(member.image)}" alt="${escapeHtml(member.name)}" />
+              </figure>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function isBusy(key) {
+      return stateStore.busy.has(key);
+    }
+
+    function setBusy(key, value) {
+      if (value) {
+        stateStore.busy.add(key);
+      } else {
+        stateStore.busy.delete(key);
+      }
+      render();
+    }
+
+    function showNotice(message) {
+      const notice = document.getElementById("notice");
+      if (!notice) return;
+      notice.textContent = message;
+      notice.classList.add("show");
+    }
+
+    function clearNotice() {
+      const notice = document.getElementById("notice");
+      if (!notice) return;
+      notice.textContent = "";
+      notice.classList.remove("show");
+    }
+
+    async function postJson(url, payload, busyKey) {
+      clearNotice();
+      if (busyKey) {
+        setBusy(busyKey, true);
+      }
+      try {
+        const response = await fetch(apiUrl(url), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload || {}),
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || "Aktion fehlgeschlagen.");
+        }
+        stateStore.state = data.state;
+        syncUiState();
+        render();
+        return data;
+      } finally {
+        if (busyKey) {
+          setBusy(busyKey, false);
+        }
+      }
+    }
+
+    async function seedStarterCrew() {
+      const state = stateStore.state || {};
+      const existing = new Set((state.participants || []).map((participant) => participant.name.toLowerCase()));
+      const missingNames = starterCrewNames.filter((name) => !existing.has(name.toLowerCase()));
+      if (!missingNames.length) {
+        showNotice("Die Starter-Crew ist bereits angelegt.");
+        return;
+      }
+      clearNotice();
+      setBusy("seed-crew", true);
+      try {
+        for (const name of missingNames) {
+          const response = await fetch(apiUrl("/api/participants"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name }),
+          });
+          const data = await response.json();
+          if (!response.ok || !data.ok) {
+            throw new Error(data.error || "Starter-Crew konnte nicht angelegt werden.");
+          }
+          stateStore.state = data.state;
+        }
+        syncUiState();
+        stateStore.attendeeIds = (stateStore.state.participants || []).map((participant) => participant.id);
+        render();
+        showNotice("Starter-Crew ist angelegt. Jetzt kannst du direkt Teilnehmer w√§hlen und den ersten Filmabend planen.");
+      } finally {
+        setBusy("seed-crew", false);
+      }
+    }
+
+    async function loadState() {
+      clearNotice();
+      try {
+        const response = await fetch(apiUrl("/api/state"));
+        const data = await response.json();
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || "State konnte nicht geladen werden.");
+        }
+        stateStore.state = data.state;
+        syncUiState();
+        render();
+      } catch (error) {
+        showNotice(error.message || "State konnte nicht geladen werden.");
+      }
+    }
+
+    function syncUiState() {
+      const state = stateStore.state;
+      if (!state) return;
+      const viewer = state.viewer || {};
+      stateStore.viewerParticipantId = viewer.participantId || null;
+      stateStore.viewerParticipantName = viewer.participantName || "";
+      stateStore.viewerIsHost = !!viewer.isHost;
+      const participants = state.participants || [];
+      const participantIds = participants.map((item) => item.id);
+      const session = state.currentSession;
+
+      if (session && session.scheduledFor) {
+        stateStore.sessionPlannedFor = session.scheduledFor;
+      } else if (!stateStore.sessionPlannedFor) {
+        stateStore.sessionPlannedFor = defaultSessionDate();
+      }
+
+      if (session) {
+        stateStore.attendeeIds = [...session.attendeeIds];
+      } else if (!stateStore.attendeeIds.length) {
+        stateStore.attendeeIds = [...participantIds];
+      } else {
+        stateStore.attendeeIds = stateStore.attendeeIds.filter((id) => participantIds.includes(id));
+      }
+
+      if (stateStore.viewerParticipantId && participantIds.includes(stateStore.viewerParticipantId)) {
+        stateStore.activeParticipantId = stateStore.viewerParticipantId;
+      } else if (!stateStore.activeParticipantId || !participantIds.includes(stateStore.activeParticipantId)) {
+        stateStore.activeParticipantId = participantIds[0] || null;
+      }
+
+      const snackCandidates = session ? session.attendeeIds : stateStore.attendeeIds;
+
+      if (stateStore.viewerParticipantId && snackCandidates.includes(stateStore.viewerParticipantId)) {
+        stateStore.activeSnackParticipantId = stateStore.viewerParticipantId;
+      } else if (!stateStore.activeSnackParticipantId || !snackCandidates.includes(stateStore.activeSnackParticipantId)) {
+        stateStore.activeSnackParticipantId = snackCandidates[0] || null;
+      }
+
+      if (stateStore.viewerParticipantId && participantIds.includes(stateStore.viewerParticipantId)) {
+        stateStore.activeCommentParticipantId = stateStore.viewerParticipantId;
+      } else if (!stateStore.activeCommentParticipantId || !participantIds.includes(stateStore.activeCommentParticipantId)) {
+        stateStore.activeCommentParticipantId = participantIds[0] || null;
+      }
+    }
+
+    function renderStat(value, label) {
+      return `
+        <article class="stat">
+          <strong>${escapeHtml(value)}</strong>
+          <span>${escapeHtml(label)}</span>
+        </article>
+      `;
+    }
+
+    function findFeaturedFilm(state) {
+      const session = state.currentSession;
+      if (session && session.revealed && session.revealed.length) {
+        return session.revealed[0].film;
+      }
+      if (session && session.candidates && session.candidates.length) {
+        return session.candidates[0];
+      }
+      const movieWithImage = (state.watchlist || []).find((item) => item.type === "movie" && item.image);
+      return movieWithImage || (state.watchlist || []).find((item) => item.type === "movie") || null;
+    }
+
+    function stageSteps(state) {
+      const session = state.currentSession;
+      if (!session) {
+        return [
+          { title: "Pool bauen", copy: "Filme sammeln und mit einem kurzen Bauchgef√ºhl markieren.", active: true },
+          { title: "Crew setzen", copy: "Festlegen, wer heute Abend wirklich dabei ist.", active: false },
+          { title: "Auto-Pick", copy: "Das System sucht daraus den besten Film f√ºr genau diese Runde.", active: false },
+          { title: "Reveal", copy: "Erst auf der Leinwand wird sichtbar, was heute l√§uft.", active: false },
+        ];
+      }
+      return [
+        { title: "Pool bauen", copy: "Pool und Geschm√§cker stehen bereits.", active: false },
+        { title: "Crew setzen", copy: "Die Runde f√ºr heute steht fest.", active: false },
+        { title: "Auto-Pick", copy: session.selection && session.selection.consensusPick ? "Das System hat einen starken Konsensfilm gefunden." : "Der beste Match f√ºr heute ist bereits fixiert.", active: !session.revealedCount },
+        { title: "Reveal", copy: session.revealedCount ? `${session.revealedCount} Pick${session.revealedCount === 1 ? "" : "s"} wurden bereits gezeigt.` : "Jetzt kommt der eigentliche Sneak-Moment.", active: !!session.revealedCount },
+      ];
+    }
+
+    function insightStripHtml(state) {
+      const history = state.sessionHistory || [];
+      const latestNight = history[0];
+      const session = state.currentSession;
+      const usePreview = !(state.participants || []).length;
+      const tonightText = !session
+        ? "Noch keine aktive Session. Sobald Hosts den Abend anlegen, pickt das System automatisch einen passenden Film."
+        : session.revealedCount
+          ? "Der heutige Film ist aufgedeckt. Jetzt lebt die Seite vom eigentlichen Abend."
+          : "Die heutige Runde ist gesetzt. Der Film ist bereits intern ausgew√§hlt und wartet nur noch auf den Reveal.";
+      const snackAssignments = session && session.snackAssignments
+        ? session.snackAssignments
+        : Object.entries(usePreview ? previewSnackAssignments : { nachos: [], chips: [], schokolade: [], eis: [], bier: [], sonstiges: [] }).map(([snackId, names]) => ({
+            snackId,
+            participantNames: names,
+          }));
+      const snackClaimed = snackAssignments.filter((item) => (item.participantNames || []).length).length;
+      const snackTotal = session && session.snackCatalog ? session.snackCatalog.length : 6;
+      const snackCopy = session
+        ? `${snackClaimed} von ${snackTotal} Snack-Slots sind schon abgedeckt.`
+        : usePreview
+          ? `${snackClaimed} von ${snackTotal} Snack-Slots sind in der Preview schon versorgt.`
+          : "Sobald die Session startet, sieht die Crew hier direkt, was schon versorgt ist.";
+
+      return `
+        <section class="insight-strip">
+          <article class="insight-card">
+            <div class="label">Heute</div>
+            <strong>${session ? "Session live" : "Bereit f√ºr den Start"}</strong>
+            <p>${escapeHtml(tonightText)}</p>
+          </article>
+          <article class="insight-card">
+            <div class="label">Snacks</div>
+            <strong>${snackClaimed}/${snackTotal} versorgt</strong>
+            <p>${escapeHtml(snackCopy)}</p>
+          </article>
+          <article class="insight-card">
+            <div class="label">Pool-Status</div>
+            <strong>${state.watchlist.length} Titel im Pool</strong>
+            <p>Alles hier ist direkt f√ºr eure Movie Night gedacht und kann sofort in die heutige Auswahl r√ºcken.</p>
+          </article>
+        </section>
+      `;
+    }
+
+    function identityEntrySectionHtml(state) {
+      const participants = state.participants || [];
+      if (!participants.length) {
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Erstmal die Crew anlegen</h2>
+              <p class="section-copy">Ein Klick legt die bekannte Stammcrew an. Danach w√§hlt jede Person einfach ihren Namen oder tritt neu als Gast bei.</p>
+              <div class="toolbar">
+                <button class="btn btn-primary" data-action="seed-crew" type="button" ${isBusy("seed-crew") ? "disabled" : ""}>
+                  ${isBusy("seed-crew") ? "Lege Crew an..." : "Starter-Crew anlegen"}
+                </button>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+      if (hasViewerLink()) {
+        return "";
+      }
+      const hosts = participants.filter((participant) => ["marius", "kathi"].includes(normalizePersonKey(participant.name)));
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Bevor es losgeht: Wer bist du heute?</h2>
+                <p class="section-copy">Tippe einfach deinen Namen an. Wenn du neu dabei bist, legst du dich unten in 10 Sekunden als Gast oder dauerhaftes Mitglied an. Die Seite setzt dich dann automatisch auf dein eigenes Profil.</p>
+              </div>
+              <div class="pills">
+                <span class="chip good">${participants.length} Personen verf√ºgbar</span>
+                <span class="chip">${hosts.length ? `${hosts.map((host) => host.name).join(" & ")} sind Hosts` : "Host-Rolle aktiv"}</span>
+              </div>
+            </div>
+            <div class="identity-shell">
+              <article class="identity-card">
+                <div class="session-kicker">Ich bin schon dabei</div>
+                <strong>Namen antippen, fertig</strong>
+                <p>Stammcrew und bekannte G√§ste springen direkt in ihr eigenes Profil. Dar√ºber laufen Likes, Snacks, Kommentare und sp√§ter auch der Reveal sauber unter dem richtigen Namen.</p>
+                <div class="identity-grid">
+                  ${participants.map((participant) => {
+                    const path = joinPathForParticipant(state, participant.id);
+                    const isHost = ["marius", "kathi"].includes(normalizePersonKey(participant.name));
+                    return `
+                      <button class="identity-person" data-action="open-profile" data-copy-path="${escapeHtml(path)}" type="button" ${!path ? "disabled" : ""}>
+                        <div>
+                          <strong>${escapeHtml(participant.name)}</strong>
+                          <span>${participant.membership === "guest" ? "Gastprofil" : isHost ? "Host-Profil" : "Crew-Profil"}</span>
+                        </div>
+                        <span class="status-tag ${isHost ? "host" : ""}">${isHost ? "Host" : participant.membership === "guest" ? "Gast" : "Crew"}</span>
+                      </button>
+                    `;
+                  }).join("")}
+                </div>
+              </article>
+              <article class="identity-card">
+                <div class="session-kicker">Ich bin neu</div>
+                <strong>In wenigen Sekunden dabei</strong>
+                <p>Wenn heute jemand neu dazust√∂√üt, reicht Name eingeben, Rolle w√§hlen und direkt ins eigene Profil springen. Gast ist nur f√ºr heute, Crew bleibt dauerhaft in der Runde.</p>
+                <form class="identity-form" data-form="self-join">
+                  <input class="field" type="text" name="name" placeholder="Dein Name" required />
+                  <div class="identity-inline">
+                    <select class="select" name="membership">
+                      <option value="guest">Nur heute als Gast</option>
+                      <option value="member">Dauerhaft zur Crew</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit" ${isBusy("self-join") ? "disabled" : ""}>
+                      ${isBusy("self-join") ? "Erstelle Profil..." : "Profil anlegen"}
+                    </button>
+                  </div>
+                </form>
+              </article>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function crewSectionHtml(state) {
+      const history = state.sessionHistory || [];
+      const session = state.currentSession;
+      const members = crewMetrics(state);
+      const hosts = members.filter((member) => member.host);
+      const support = members.filter((member) => !member.host);
+      const activeTonight = members.filter((member) => member.activeTonight).length;
+      const profiledCrew = members.filter((member) => !!member.participant).length;
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Crew & Mitglieder</h2>
+                <p class="section-copy">Der Abend hat Hosts, Stammg√§ste und ein paar legend√§re Nebenrollen. Genau das soll man hier sofort sehen.</p>
+              </div>
+              <div class="pills">
+                <span class="chip good">${profiledCrew}/${members.length} Crewprofile mit echtem Geschmacksprofil</span>
+                <span class="chip ${session ? "live" : "warn"}">${session ? `${activeTonight} heute on stage` : "Noch keine aktive Session"}</span>
+              </div>
+            </div>
+
+            <div class="host-grid">
+              ${hosts.map((member) => {
+                const status = crewStatusLabel(member, history.length);
+                return `
+                  <article class="host-card">
+                    <div class="portrait-frame ${member.portraitFit === "contain" ? "contained" : ""}" style="--portrait-position:${escapeHtml(member.portraitPosition || "center 18%")};--portrait-fit:${escapeHtml(member.portraitFit || "cover")};--portrait-padding:${escapeHtml(member.portraitPadding || "0")};--portrait-scale:${escapeHtml(member.portraitScale || "1")};--portrait-shift:${escapeHtml(member.portraitShift || "0")}">
+                      <img src="${escapeHtml(member.image)}" alt="${escapeHtml(member.name)}" />
+                      ${member.portraitFix ? `<div class="portrait-fix ${escapeHtml(member.portraitFix)}"></div>` : ""}
+                    </div>
+                    <div class="host-body">
+                      <div class="pills">
+                        <span class="role-tag">${escapeHtml(member.role)}</span>
+                        <span class="status-tag ${escapeHtml(status.tone)}">${escapeHtml(status.label)}</span>
+                      </div>
+                      <strong>${escapeHtml(member.name)}</strong>
+                      <div class="host-subline">${escapeHtml(member.arc)}</div>
+                      <p>${escapeHtml(member.bio)}</p>
+                      <div class="cast-stats">
+                        <span class="cast-stat"><strong>${member.attendancePercent}%</strong> Teilnahme</span>
+                        <span class="cast-stat"><strong>${member.likes}</strong> Likes</span>
+                        <span class="cast-stat"><strong>${member.activeTonight ? "Heute live" : "Heute off"}</strong></span>
+                      </div>
+                    </div>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+
+            <div class="member-grid">
+              ${support.map((member) => {
+                const status = crewStatusLabel(member, history.length);
+                return `
+                  <article class="member-card">
+                    <div class="portrait-frame ${member.portraitFit === "contain" ? "contained" : ""}" style="--portrait-position:${escapeHtml(member.portraitPosition || "center 18%")};--portrait-fit:${escapeHtml(member.portraitFit || "cover")};--portrait-padding:${escapeHtml(member.portraitPadding || "0")};--portrait-scale:${escapeHtml(member.portraitScale || "1")};--portrait-shift:${escapeHtml(member.portraitShift || "0")}">
+                      <img src="${escapeHtml(member.image)}" alt="${escapeHtml(member.name)}" />
+                      ${member.portraitFix ? `<div class="portrait-fix ${escapeHtml(member.portraitFix)}"></div>` : ""}
+                    </div>
+                    <div class="member-body">
+                      <div class="member-head">
+                        <div>
+                          <strong>${escapeHtml(member.name)}</strong>
+                          <div class="member-subline">${escapeHtml(member.arc)}</div>
+                        </div>
+                        <span class="status-tag ${escapeHtml(status.tone)}">${escapeHtml(status.label)}</span>
+                      </div>
+                      <p>${escapeHtml(member.bio)}</p>
+                      <div class="cast-stats">
+                        <span class="cast-stat"><strong>${member.attendancePercent}%</strong> Teilnahme</span>
+                        <span class="cast-stat"><strong>${member.likes}</strong> Likes</span>
+                        <span class="cast-stat"><strong>${member.activeTonight ? "Heute im Cast" : "Heute nicht aktiv"}</strong></span>
+                      </div>
+                    </div>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function campaignSectionHtml(state) {
+      const history = state.sessionHistory || [];
+      const latest = history[0];
+      const session = state.currentSession;
+      const memberStats = crewMetrics(state);
+      const topCrew = [...memberStats]
+        .sort((left, right) => (right.nights - left.nights) || (right.likes - left.likes))
+        .slice(0, 3);
+      const movieServices = (state.watchlist || [])
+        .filter((item) => item.type === "movie")
+        .reduce((acc, item) => {
+          const label = item.serviceLabel || "Unbekannt";
+          acc[label] = (acc[label] || 0) + 1;
+          return acc;
+        }, {});
+      const serviceRows = Object.entries(movieServices)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 3);
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Campaign Log</h2>
+                <p class="section-copy">
+                  Die Seite fuehlt sich am besten an, wenn sie nicht nur Tools zeigt, sondern eure kleine Crew-Legende.
+                  Hier laufen aktuelle Session, bisherige Sieger und Stammgaeste zusammen.
+                </p>
+              </div>
+              <div class="pills">
+                <span class="chip good">${history.length} archivierte Night${history.length === 1 ? "" : "s"}</span>
+                <span class="chip">${serviceRows.length ? `${serviceRows[0][0]} f√ºhrt gerade` : "Noch ohne Ranking"}</span>
+              </div>
+            </div>
+
+            <div class="insight-strip">
+              <article class="insight-card">
+                <div class="label">Aktueller Modus</div>
+                <strong>${session ? "Session live" : "Pre-launch"}</strong>
+                <p>${session ? `${(session.attendees || []).length} Personen sind f√ºr heute gesetzt. Der Film steht bereits fest und wartet nur noch auf seinen gro√üen Moment.` : "Noch keine aktive Session. Gerade ist die Seite vor allem euer Ort f√ºr Pool, Crew und den n√§chsten Filmabend."}</p>
+              </article>
+              <article class="insight-card">
+                <div class="label">Letzter Winner</div>
+                <strong>${latest && latest.winner ? escapeHtml(latest.winner.title) : "Noch keiner geloggt"}</strong>
+                <p>${latest ? `Crew on duty: ${escapeHtml((latest.attendees || []).join(", "))}` : "Sobald der erste Abend archiviert ist, bekommt ihr hier sofort nostalgische R√ºckblicke."}</p>
+              </article>
+              <article class="insight-card">
+                <div class="label">Dominante Crew</div>
+                <strong>${topCrew[0] ? escapeHtml(topCrew[0].name) : "Noch offen"}</strong>
+                <p>${topCrew.length ? `${topCrew.map((member) => `${member.name} (${member.nights})`).join(" ¬∑ ")}.` : "Noch keine Sessions im Archiv, also noch keine belastbare Legende."}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function rtBadge(film) {
+      const percent = film && film.rt && film.rt.percent;
+      if (!percent) {
+        return "";
+      }
+      const label = (film.rt && film.rt.label) || "Tomatometer";
+      return `<span class="rt-badge">${escapeHtml(percent)}% ${escapeHtml(label)}</span>`;
+    }
+
+    function heroHtml(state) {
+      const session = state.currentSession;
+
+      return `
+        <section class="hero">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">Group Film Night</div>
+              <h1>Movie Night. Ein Pool, eine Crew, ein automatischer Pick.</h1>
+              <p class="sub">
+                Jede Person markiert die Filme nach ihrem Geschmack. Sobald feststeht, wer heute Abend wirklich dabei ist, w√§hlt das System daraus automatisch den Film, der am besten zu genau dieser Runde passt.
+              </p>
+              ${hasViewerLink() ? `
+                <div class="pills" style="margin-top: 14px;">
+                  <span class="chip live">Du bist als ${escapeHtml(stateStore.viewerParticipantName || "Crewmitglied")} auf der Seite</span>
+                  ${isViewerHost() ? `<span class="chip good">Host-Rechte aktiv</span>` : `<span class="chip">Likes, Snacks und Kommentare laufen automatisch unter deinem Namen</span>`}
+                  <button class="btn btn-ghost" data-action="switch-profile" type="button">Profil wechseln</button>
+                </div>
+              ` : ""}
+
+              <div class="toolbar">
+                ${session && isViewerHost() ? `
+                  <button class="btn btn-primary" data-action="reveal-next" ${isBusy("reveal") ? "disabled" : ""}>
+                    ${isBusy("reveal") ? "Reveal l√§uft..." : session.revealedCount ? "Ersatzfilm revealen" : "Film revealen"}
+                  </button>
+                ` : ""}
+                ${session && isViewerHost() ? `
+                  <button class="btn btn-ghost" data-action="reset-session" ${isBusy("reset") ? "disabled" : ""}>
+                    ${isBusy("reset") ? "Setze zur√ºck..." : "Session archivieren"}
+                  </button>
+                ` : ""}
+              </div>
+
+              <div class="stage-rail">
+                ${stageSteps(state).map((step) => `
+                  <article class="stage-step ${step.active ? "active" : ""}">
+                    <strong>${escapeHtml(step.title)}</strong>
+                    <span>${escapeHtml(step.copy)}</span>
+                  </article>
+                `).join("")}
+              </div>
+            </div>
+
+            <aside class="hero-preview poster-mode has-art">
+              <img class="hero-poster-art" src="${escapeHtml(finalPosterImage)}" alt="Movie Night Poster" />
+            </aside>
+          </div>
+
+          <div class="stats">
+            ${renderStat(state.stats.watchlistCount, "Watchlist-Titel im gemeinsamen Pool")}
+            ${renderStat(state.stats.movieCount, "einsatzbereit f√ºr die Auswahl")}
+            ${renderStat(session ? (session.revealedCount ? "live" : "bereit") : "1 Pick", session ? "heutiger Abendstatus" : "automatischer Pick pro Abend")}
+          </div>
+
+          <div class="notice" id="notice"></div>
+        </section>
+      `;
+    }
+
+    function participantSectionHtml(state) {
+      const participants = state.participants || [];
+      const viewerMode = hasViewerLink();
+      const cards = participants.length ? participants : previewParticipants.map((name, index) => ({
+        id: `preview-${index}`,
+        name,
+        preview: true,
+      }));
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Teilnehmer</h2>
+                <p class="section-copy">${viewerMode && !isViewerHost() ? "Hosts legen fest, wer heute dabei ist. Dein Profil ist bereits aktiv, Likes, Snacks und Kommentare laufen automatisch unter deinem Namen." : "Hier legen Hosts fest, wer heute Abend wirklich dabei ist."}</p>
+              </div>
+              <div class="pills">
+                ${participants.length ? `<span class="chip good">${participants.length} Profile</span>` : `<span class="chip warn">Preview mit Dummy-Crew</span>`}
+                ${viewerMode ? `<span class="chip ${isViewerHost() ? "good" : "live"}">${escapeHtml(stateStore.viewerParticipantName || "Profil")} aktiv</span>` : `<span class="chip">Waehle oben zuerst deinen Namen</span>`}
+              </div>
+            </div>
+
+            ${!participants.length ? `
+              <div class="empty" style="margin-bottom: 18px;">
+                <strong style="display:block;margin-bottom:8px;color:var(--ink);">Ein Klick bis zum echten Startsetup.</strong>
+                Die Seite zeigt gerade noch die Crew als Vorschau. Lege mit einem Klick die bekannte Starter-Crew an, dann kannst du sofort echte Teilnehmer w√§hlen, Kommentare posten und einen Filmabend planen.
+                <div class="toolbar" style="margin-top: 14px;">
+                  <button class="btn btn-primary" data-action="seed-crew" type="button" ${isBusy("seed-crew") ? "disabled" : ""}>
+                    ${isBusy("seed-crew") ? "Lege Crew an..." : "Starter-Crew anlegen"}
+                  </button>
+                </div>
+              </div>
+            ` : ""}
+
+            <div class="participant-grid">
+              ${cards.map((participant) => `
+                <article class="participant-card ${participant.preview || stateStore.attendeeIds.includes(participant.id) ? "active" : ""}">
+                  <label>
+                    <div>
+                      <strong>${escapeHtml(participant.name)}</strong>
+                      <span>${participant.preview ? "Preview-Crew f√ºr die Endansicht" : stateStore.attendeeIds.includes(participant.id) ? "heute aktiv" : "heute nicht aktiv"}${stateStore.viewerParticipantId === participant.id ? " ¬∑ du" : ""}</span>
+                    </div>
+                    <input class="checkbox" type="checkbox" data-role="attendee-toggle" data-participant-id="${escapeHtml(participant.id)}" ${participant.preview || stateStore.attendeeIds.includes(participant.id) ? "checked" : ""} ${state.currentSession || participant.preview || !isViewerHost() ? "disabled" : ""} />
+                  </label>
+                </article>
+              `).join("")}
+            </div>
+
+            ${isViewerHost() ? `
+              <form class="mini-form" data-form="add-participant">
+                <input class="field field-inline" type="text" name="name" placeholder="Neuen Teilnehmer hinzuf√ºgen, z. B. Marius" required />
+                <button class="btn btn-primary" type="submit" ${isBusy("participant") ? "disabled" : ""}>
+                  ${isBusy("participant") ? "Speichere..." : "Teilnehmer anlegen"}
+                </button>
+              </form>
+            ` : ""}
+          </div>
+        </section>
+      `;
+    }
+
+    function launchGuideSectionHtml(state) {
+      if (!identitySelected()) {
+        return "";
+      }
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">So geht der Abend live</h2>
+                <p class="section-copy">1. Pool f√ºllen. 2. Reaktionen setzen. 3. Hosts legen die Runde f√ºr heute fest. 4. Das System w√§hlt automatisch den besten Film. 5. Erst vor Ort kommt der Reveal.</p>
+              </div>
+              <div class="pills">
+                <span class="chip good">Kein Login n√∂tig</span>
+                <span class="chip">${isViewerHost() ? "Host-Profil aktiv" : "Profil aktiv"}</span>
+              </div>
+            </div>
+            <div class="launch-guide">
+              <article class="launch-step">
+                <div class="label">Schritt 1</div>
+                <strong>Pool pflegen</strong>
+                <p>Jede Person markiert Titel einfach als Like, Neutral, Dislike oder Schon gesehen.</p>
+              </article>
+              <article class="launch-step">
+                <div class="label">Schritt 2</div>
+                <strong>Hosts setzen die Runde</strong>
+                <p>Datum und heutige Teilnehmer festlegen. Mehr braucht es vor dem Abend nicht.</p>
+              </article>
+              <article class="launch-step">
+                <div class="label">Schritt 3</div>
+                <strong>Automatischer Pick, dann gro√üer Reveal</strong>
+                <p>Das System trifft die Auswahl im Hintergrund. Sichtbar wird sie erst auf der Leinwand.</p>
+              </article>
+            </div>
+            <div class="launch-helper">
+              <strong>Host-Rechte:</strong> Nur Hosts d√ºrfen Teilnehmer festlegen, die Session starten und den Reveal ausl√∂sen. Alle anderen Aktionen laufen unter dem jeweils gew√§hlten Profil.
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function joinLinksSectionHtml(state) {
+      const links = state.joinLinks || [];
+      if (!links.length || !isViewerHost()) {
+        return "";
+      }
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Direktlinks der Stammcrew</h2>
+                <p class="section-copy">Optional f√ºr Hosts oder Stammg√§ste. Im Alltag reicht oben einfach die Namenswahl, aber hier kannst du die individuellen Direktlinks weitergeben oder sichern.</p>
+              </div>
+              <div class="pills">
+                <span class="chip good">${links.length} Direktlinks bereit</span>
+                <button class="btn btn-secondary" data-action="copy-all-links" type="button">Alle kopieren</button>
+              </div>
+            </div>
+            <div class="watchlist-grid">
+              ${links.map((entry) => `
+                <article class="watch-row">
+                  <div>
+                    <strong>${escapeHtml(entry.participantName)}</strong>
+                    <p>Direkter Link f√ºr die pers√∂nliche Ansicht ohne Registrierung.</p>
+                  </div>
+                  <div class="reaction-row">
+                    <button class="btn btn-primary" data-action="copy-link" data-copy-path="${escapeHtml(entry.path)}" type="button">Link kopieren</button>
+                  </div>
+                </article>
+              `).join("")}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function sessionSectionHtml(state) {
+      const session = state.currentSession;
+      if (!session) {
+        const canCreate = isViewerHost() && stateStore.attendeeIds.length > 0 && state.participants.length > 0;
+        const attendeeCount = stateStore.attendeeIds.length;
+        const attendeeNames = (state.participants || [])
+          .filter((participant) => stateStore.attendeeIds.includes(participant.id))
+          .map((participant) => participant.name);
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <div class="session-hero">
+                <div class="session-primary">
+                  <div class="session-kicker">Filmabend anlegen</div>
+                  <strong>${escapeHtml(formatSessionDate(stateStore.sessionPlannedFor))} als Sneak Night planen</strong>
+                  <p>${!identitySelected() ? "W√§hle zuerst oben deinen Namen." : !isViewerHost() ? "Hosts starten den Abend. Danach wartet nur noch der Reveal." : "Datum setzen, Crew festlegen, Auto-Pick starten."}</p>
+                  <div class="session-quick-facts">
+                    <span class="chip good">${attendeeCount} Teilnehmer ausgew√§hlt</span>
+                    <span class="chip">${canCreate ? "bereit f√ºr den Auto-Pick" : !identitySelected() ? "warte auf Namenswahl" : !isViewerHost() ? "wartet auf Host-Start" : "noch nicht startklar"}</span>
+                  </div>
+                  <div class="session-stage">
+                    <article class="session-step active">
+                      <span>01</span>
+                      <strong>Runde festlegen</strong>
+                      <p>Wer ist heute wirklich dabei?</p>
+                    </article>
+                    <article class="session-step">
+                      <span>02</span>
+                      <strong>Auto-Pick</strong>
+                      <p>Das System trifft die Auswahl.</p>
+                    </article>
+                    <article class="session-step">
+                      <span>03</span>
+                      <strong>Reveal</strong>
+                      <p>Erst vor Ort wird der Titel sichtbar.</p>
+                    </article>
+                  </div>
+                  ${attendeeNames.length ? `
+                    <p class="session-plan-note">Aktuell im Abend-Setup: ${escapeHtml(attendeeNames.join(", "))}</p>
+                  ` : ""}
+                  ${isViewerHost() ? `
+                  <form class="session-plan-form" data-form="create-session">
+                    <div class="session-plan-grid">
+                      <input class="field" type="date" name="scheduledFor" value="${escapeHtml(stateStore.sessionPlannedFor || defaultSessionDate())}" />
+                      <button class="btn btn-primary" type="submit" ${!canCreate || isBusy("session-create") ? "disabled" : ""}>
+                        ${isBusy("session-create") ? "Berechne Pick..." : "Filmabend anlegen"}
+                      </button>
+                    </div>
+                    <div class="session-plan-note">Das System nutzt Likes, Neutrals, Dislikes und den Gesehen-Status der heutigen Runde.</div>
+                  </form>
+                  ` : `<div class="empty" style="margin-top: 16px;">${escapeHtml(interactionHint(state) || "Ein Host startet den Filmabend. Danach wartet der fertige Pick nur noch auf den Reveal.")}</div>`}
+                </div>
+                <div class="session-sidekick">
+                  <div class="session-kicker">Der Ablauf</div>
+                  <strong>Heute im Cast</strong>
+                  <p>Die Hosts w√§hlen nur die Runde aus. Alles Weitere passiert automatisch im Hintergrund.</p>
+                  <div class="cast-pill-row">
+                    ${attendeeNames.length ? attendeeNames.map((name) => `<span class="chip">${escapeHtml(name)}</span>`).join("") : `<span class="chip">Noch niemand gesetzt</span>`}
+                  </div>
+                </div>
+              </div>
+              <div class="candidate-grid" style="margin-top: 18px;">
+                ${previewSessionCandidates.slice(0, 3).map((film, index) => `
+                  <article class="candidate-card">
+                    <div class="candidate-card-content">
+                      <div class="kicker">${index === 0 ? "Typischer Auto-Pick" : "Weiterer guter Match"}</div>
+                      <strong>${escapeHtml(film.title)}</strong>
+                      <p>${escapeHtml(film.reason)}</p>
+                    <div class="meta">
+                      <span class="chip">${escapeHtml(film.serviceLabel)}</span>
+                    </div>
+                  </div>
+                </article>
+                `).join("")}
+              </div>
+              <div class="empty" style="margin-top: 18px;">
+                Noch keine aktive Session. Die Karten oben zeigen nur, wie das System passende Titel f√ºr die heutige Runde priorisieren w√ºrde.
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      const selection = session.selection;
+      const canReveal = session.hasMoreReveals;
+      const currentReveal = session.revealed && session.revealed.length
+        ? session.revealed[session.revealed.length - 1]
+        : null;
+      const screenTitle = currentReveal ? currentReveal.film.title : "Heute wartet ein geheimer Pick";
+      const screenKicker = currentReveal
+        ? (currentReveal.position === 1 ? "Tonight's Feature" : `Backup Pick ${currentReveal.position}`)
+        : "Vorhang noch geschlossen";
+      const screenSub = currentReveal
+        ? (currentReveal.position === 1
+            ? "Die Leinwand ist an. Das ist der offizielle Film f√ºr heute Abend."
+            : "Der naechste Backup-Pick ist jetzt auf der Leinwand.")
+        : "Die Runde steht. Ein Klick auf Reveal startet den eigentlichen Kinomoment.";
+      const screenCaptionTitle = currentReveal
+        ? (currentReveal.position === 1 ? "Reveal erfolgreich" : "Backup aktiv")
+        : "Leinwand bereit";
+      const screenCaptionCopy = currentReveal
+        ? (currentReveal.film.reason || "Vom System f√ºr diese Runde als starker Match priorisiert.")
+        : "Der Film ist intern schon fixiert und wird erst beim Reveal auf der Leinwand sichtbar.";
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="session-hero">
+              <div class="session-primary">
+                <div class="session-kicker">Heutige Sneak-Session</div>
+                <strong>${session.revealedCount ? "Der heutige Film ist da" : "Der heutige Film ist intern fixiert"}${session.scheduledFor ? ` ¬∑ ${escapeHtml(formatSessionDate(session.scheduledFor))}` : ""}</strong>
+                <p>${session.revealedCount ? "Wenn der erste Film spontan doch nicht passt, kannst du direkt den n√§chsten Backup-Pick aufdecken." : "Die Runde f√ºr heute steht. Der Film ist fixiert und wartet nur noch auf den Reveal."}</p>
+                <div class="pills">
+                  <span class="chip good">${(session.attendees || []).length} Personen heute dabei</span>
+                  <span class="chip live">${session.revealedCount} Reveal${session.revealedCount === 1 ? "" : "s"}</span>
+                  <span class="chip ${selection && selection.consensusPick ? "good" : ""}">${selection && selection.consensusPick ? "Konsens-Pick gefunden" : "Bester Match fixiert"}</span>
+                </div>
+                <div class="session-stage">
+                  <article class="session-step done">
+                    <span>01</span>
+                    <strong>Runde steht</strong>
+                    <p>Die Crew f√ºr heute ist festgelegt.</p>
+                  </article>
+                  <article class="session-step done">
+                    <span>02</span>
+                    <strong>Pick fixiert</strong>
+                    <p>${selection && selection.consensusPick ? "Ein klarer Konsensfilm wurde gefunden." : "Das System hat den besten Match gew√§hlt."}</p>
+                  </article>
+                  <article class="session-step ${session.revealedCount ? "active" : ""}">
+                    <span>03</span>
+                    <strong>Reveal-Moment</strong>
+                    <p>${session.revealedCount ? "Falls n√∂tig, wartet noch ein Backup." : "Ein Klick bringt den Film auf die Leinwand."}</p>
+                  </article>
+                </div>
+              </div>
+              <div class="session-sidekick">
+                <div class="session-kicker">Heute im Cast</div>
+                <strong>${(session.attendees || []).length} Personen f√ºr heute gesetzt</strong>
+                <p>${selection ? `System-Fokus: ${escapeHtml(selection.reason || "Bester gemeinsamer Match f√ºr heute.")}` : "Die Runde ist gesetzt und wartet auf den Reveal."}</p>
+                <div class="cast-pill-row">
+                  ${(session.attendees || []).map((attendee) => `<span class="chip">${escapeHtml(attendee.name)}</span>`).join("")}
+                </div>
+              </div>
+            </div>
+
+            <div class="candidate-grid" style="margin-top: 18px;">
+              ${[(currentReveal ? currentReveal.film : selection)].filter(Boolean).map((film, index) => `
+                <article class="candidate-card" style="${film.image ? `background-image: url('${escapeHtml(film.image)}');` : ""}">
+                  <div class="candidate-card-content">
+                    <div class="kicker">${session.revealedCount ? `Aktueller Pick` : "Geheimer Pick"}</div>
+                    <strong>${escapeHtml(session.revealedCount ? film.title : "Titel bleibt bis zum Reveal verborgen")}</strong>
+                    <p>${escapeHtml(session.revealedCount ? film.reason : "Das System hat bereits den besten Match f√ºr diese Runde fixiert. Sichtbar wird er erst auf der Leinwand.")}</p>
+                    <div class="meta">
+                      ${session.revealedCount ? `
+                        <span class="chip">${escapeHtml(film.serviceLabel)}</span>
+                        ${rtBadge(film)}
+                      ` : `
+                        <span class="chip">${(session.attendees || []).length} Personen heute dabei</span>
+                        <span class="chip ${selection && selection.consensusPick ? "good" : ""}">${selection && selection.consensusPick ? "Konsensfilm gefunden" : "Bester Match fixiert"}</span>
+                      `}
+                    </div>
+                  </div>
+                </article>
+              `).join("")}
+            </div>
+
+            ${isViewerHost() ? `
+              <div class="ballot-sheet">
+                <strong>${session.revealedCount ? "Optionaler Backup-Reveal" : "Alles ist bereit f√ºr den Reveal"}</strong>
+                <p class="section-copy" style="margin-top: 8px;">
+                  ${session.revealedCount ? "Wenn die Gruppe den ersten Film doch skippt, kannst du direkt den n√§chsten passenden Backup-Pick aufdecken." : "Der Film ist schon intern ausgew√§hlt. Erst jetzt bekommt die Runde ihn wirklich zu sehen."}
+                </p>
+                <div class="toolbar">
+                  <button class="btn btn-primary" data-action="reveal-next" ${!canReveal || isBusy("reveal") ? "disabled" : ""}>
+                    ${isBusy("reveal") ? "Reveal l√§uft..." : session.revealedCount ? "N√§chsten Pick revealen" : "Film revealen"}
+                  </button>
+                  ${session.revealedCount ? `
+                    <button class="btn btn-ghost" data-action="reset-reveal" ${isBusy("reveal-reset") ? "disabled" : ""}>
+                      ${isBusy("reveal-reset") ? "Setze Reveal zur√ºck..." : "Reveal zur√ºcksetzen"}
+                    </button>
+                  ` : ""}
+                </div>
+              </div>
+            ` : ""}
+
+            <div class="cinema-reveal">
+              <div class="cinema-proscenium"></div>
+              <div class="cinema-screen ${currentReveal ? "" : "closed"}">
+                <div class="cinema-screen-content">
+                  <div class="cinema-screen-kicker">${escapeHtml(screenKicker)}</div>
+                  <div class="cinema-screen-title">${escapeHtml(screenTitle)}</div>
+                  <div class="cinema-screen-sub">${escapeHtml(screenSub)}</div>
+                  <div class="cinema-screen-meta">
+                    ${currentReveal ? `
+                      <span class="chip">${escapeHtml(currentReveal.film.serviceLabel)}</span>
+                      ${currentReveal.film.rt && currentReveal.film.rt.percent ? `<span class="chip">${escapeHtml(currentReveal.film.rt.percent)}% RT</span>` : ""}
+                    ` : `
+                      <span class="chip">${(session.attendees || []).length} Personen heute dabei</span>
+                      <span class="chip ${selection && selection.consensusPick ? "good" : ""}">${selection && selection.consensusPick ? "Konsensfilm fixiert" : "Bester Match fixiert"}</span>
+                    `}
+                  </div>
+                </div>
+              </div>
+              <div class="cinema-caption">
+                <strong>${escapeHtml(screenCaptionTitle)}</strong>
+                <span>${escapeHtml(screenCaptionCopy)}</span>
+              </div>
+              <div class="cinema-audience"></div>
+              <div class="cinema-stage-floor"></div>
+            </div>
+            ${currentReveal && session.revealed.length > 1 ? `
+                <div class="reveal-list">
+                  ${session.revealed.filter((entry) => entry.position !== currentReveal.position).map((entry) => `
+                    <article class="reveal-card">
+                      <div class="place">Platz ${entry.position}</div>
+                      <h3>${escapeHtml(entry.film.title)}</h3>
+                      <div class="pills">
+                        <span class="chip good">${escapeHtml(entry.film.serviceLabel)}</span>
+                        ${entry.film.rt && entry.film.rt.percent ? `<span class="chip warn">${escapeHtml(entry.film.rt.percent)}% RT</span>` : ""}
+                      </div>
+                      <p class="section-copy" style="margin-top: 10px;">
+                        Backup-Pick, falls die Runde weiterspringt.
+                      </p>
+                      ${entry.film.url ? `<p style="margin-top: 10px;"><a class="inline-link" href="${escapeHtml(entry.film.url)}" target="_blank" rel="noreferrer">Titel √∂ffnen</a></p>` : ""}
+                    </article>
+                  `).join("")}
+                </div>
+              ` : ""}
+          </div>
+        </section>
+      `;
+    }
+
+    function snackSectionHtml(state) {
+      const session = state.currentSession;
+      const viewerMode = hasViewerLink();
+      const usePreview = !(state.participants || []).length;
+      if (!session) {
+        const previewRows = [
+          { label: "Nachos", names: usePreview ? previewSnackAssignments.nachos : [] },
+          { label: "Chips", names: usePreview ? previewSnackAssignments.chips : [] },
+          { label: "Schokolade", names: usePreview ? previewSnackAssignments.schokolade : [] },
+          { label: "Eis", names: usePreview ? previewSnackAssignments.eis : [] },
+          { label: "Bier", names: usePreview ? previewSnackAssignments.bier : [] },
+          { label: "Sonstiges", names: usePreview ? previewSnackAssignments.sonstiges : [] },
+        ];
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Snack Board</h2>
+              <p class="section-copy">Nachos, Chips, Schokolade, Eis, Bier oder Sonstiges. Sobald eine Session l√§uft, klickt jeder einfach an, was er mitbringt.</p>
+              <div class="snack-grid">
+                ${previewRows.map((item) => `
+                  <article class="snack-card ${item.names.length ? "claimed" : ""}">
+                    <strong>${escapeHtml(`${snackIcon(item.label)} ${item.label}`)}</strong>
+                    <p>${item.names.length ? `${escapeHtml(item.names.join(", "))} bringt es mit.` : usePreview ? "Noch offen." : "Wird aktiv, sobald ein Filmabend l√§uft."}</p>
+                  </article>
+                `).join("")}
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      const activeParticipant = (session.attendees || []).find((item) => item.id === stateStore.activeSnackParticipantId)
+        || session.attendees[0];
+      const assignments = new Map((session.snackAssignments || []).map((entry) => [entry.snackId, entry]));
+      const lockedHint = interactionHint(state);
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="watchlist-header">
+              <div>
+                <h2 class="section-title">Snack Board</h2>
+                <p class="section-copy">${viewerMode && !isViewerHost() ? "Dein Profil ist schon auf deinen Namen gesetzt. Du klickst nur noch an, was du mitbringst." : !identitySelected() ? "Waehle oben zuerst deinen Namen. Danach klickst du nur noch an, was du mitbringst." : "Jeder klickt an, was er mitbringt. Mehr braucht es nicht."}</p>
+              </div>
+              ${viewerMode && !isViewerHost() ? `
+                <div class="pills"><span class="chip live">${escapeHtml(activeParticipant.name)} ist aktiv</span></div>
+              ` : !identitySelected() ? `
+                <div class="pills"><span class="chip">${escapeHtml(lockedHint)}</span></div>
+              ` : `
+              <div class="ballot-tabs">
+                ${(session.attendees || []).map((participant) => `
+                  <button class="tab-btn ${participant.id === activeParticipant.id ? "active" : ""}" data-action="select-snack-participant" data-participant-id="${escapeHtml(participant.id)}" type="button">
+                    ${escapeHtml(participant.name)}
+                  </button>
+                `).join("")}
+              </div>
+              `}
+            </div>
+
+            <div class="snack-grid">
+              ${(session.snackCatalog || []).map((item) => {
+                const owner = assignments.get(item.id);
+                const participantNames = owner ? owner.participantNames || [] : [];
+                const claimedByActive = owner && (owner.participantIds || []).includes(activeParticipant.id);
+                return `
+                  <article class="snack-card ${participantNames.length ? "claimed" : ""}">
+                    <strong>${escapeHtml(`${snackIcon(item.id)} ${item.label}`)}</strong>
+                    <p>${participantNames.length ? `${escapeHtml(participantNames.join(", "))} bringt es mit.` : "Noch offen."}</p>
+                    <button class="btn ${claimedByActive ? "btn-ghost" : "btn-primary"}" data-action="toggle-snack" data-participant-id="${escapeHtml(activeParticipant.id)}" data-snack-id="${escapeHtml(item.id)}" type="button" ${!identitySelected() ? "disabled" : ""}>
+                      ${claimedByActive ? "Doch nicht" : `${escapeHtml(activeParticipant.name)} bringt's mit`}
+                    </button>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function tasteSectionHtml(state) {
+      const participants = state.participants || [];
+      const viewerMode = hasViewerLink();
+      const watchlist = (state.watchlist || []).filter((film) => film.type === "movie");
+      if (!participants.length) {
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Geschmack pro Person</h2>
+              <div class="empty">Sobald Teilnehmer angelegt sind, kannst du f√ºr jede Person Likes, Dislikes und Schon-gesehen auf der gemeinsamen Film-Watchlist markieren.</div>
+            </div>
+          </section>
+        `;
+      }
+
+      if (!watchlist.length) {
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Geschmack pro Person</h2>
+              <div class="empty">Aktuell ist noch kein Titel in der Watchlist. F√ºge unten einfach die ersten Filme f√ºr euren gemeinsamen Pool hinzu.</div>
+            </div>
+          </section>
+        `;
+      }
+
+      const activeParticipant = participants.find((item) => item.id === stateStore.activeParticipantId) || participants[0];
+      const prefs = state.preferences || {};
+      const currentPrefs = prefs[activeParticipant.id] || {};
+      const disabled = !identitySelected();
+      const visibleFilms = watchlist.slice(0, 8);
+      const hiddenFilms = watchlist.slice(8);
+      const tasteCards = (films) => films.map((film) => {
+        const currentReaction = (currentPrefs[film.id] || {}).reaction || "neutral";
+        return `
+          <article class="watch-row">
+            <div>
+              <strong>${escapeHtml(film.title)}</strong>
+              <p>${escapeHtml(film.serviceLabel)}${film.rt && film.rt.percent ? ` ¬∑ ${escapeHtml(film.rt.percent)}% RT` : ""}</p>
+            </div>
+            <div class="reaction-row">
+              <button class="reaction-btn ${currentReaction === "neutral" ? "active" : ""}" data-action="set-reaction" data-participant-id="${escapeHtml(activeParticipant.id)}" data-film-id="${escapeHtml(film.id)}" data-reaction="neutral" type="button" ${disabled ? "disabled" : ""}>Neutral</button>
+              <button class="reaction-btn like ${currentReaction === "like" ? "active" : ""}" data-action="set-reaction" data-participant-id="${escapeHtml(activeParticipant.id)}" data-film-id="${escapeHtml(film.id)}" data-reaction="like" type="button" ${disabled ? "disabled" : ""}>Like</button>
+              <button class="reaction-btn dislike ${currentReaction === "dislike" ? "active" : ""}" data-action="set-reaction" data-participant-id="${escapeHtml(activeParticipant.id)}" data-film-id="${escapeHtml(film.id)}" data-reaction="dislike" type="button" ${disabled ? "disabled" : ""}>Dislike</button>
+              <button class="reaction-btn seen ${currentReaction === "seen" ? "active" : ""}" data-action="set-reaction" data-participant-id="${escapeHtml(activeParticipant.id)}" data-film-id="${escapeHtml(film.id)}" data-reaction="seen" type="button" ${disabled ? "disabled" : ""}>Schon gesehen</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="watchlist-header">
+              <div>
+                <h2 class="section-title">Geschmack pro Person</h2>
+                <p class="section-copy">${viewerMode && !isViewerHost() ? "Dein Profil ist schon aktiv. Likes schieben Filme nach oben, Dislikes werfen sie f√ºr diesen Abend raus." : disabled ? "W√§hle oben zuerst deinen Namen. Danach laufen Reaktionen automatisch unter deinem Profil." : "Likes schieben Filme nach oben. Dislikes werfen sie f√ºr diesen Abend raus. Schon gesehen macht sie weniger dringend."}</p>
+              </div>
+              ${viewerMode && !isViewerHost() ? `
+                <div class="pills"><span class="chip live">${escapeHtml(activeParticipant.name)} bewertet gerade</span></div>
+              ` : `
+              <div class="ballot-tabs">
+                ${participants.map((participant) => `
+                  <button class="tab-btn ${participant.id === activeParticipant.id ? "active" : ""}" data-action="select-participant" data-participant-id="${escapeHtml(participant.id)}" type="button">
+                    ${escapeHtml(participant.name)}
+                  </button>
+                `).join("")}
+              </div>
+              `}
+            </div>
+
+            <div class="watchlist-grid">
+              ${tasteCards(visibleFilms)}
+            </div>
+            ${hiddenFilms.length ? `
+              <details class="list-more">
+                <summary>${hiddenFilms.length} weitere Reaktionen anzeigen</summary>
+                <div class="watchlist-grid">
+                  ${tasteCards(hiddenFilms)}
+                </div>
+              </details>
+            ` : ""}
+          </div>
+        </section>
+      `;
+    }
+
+    function commentsSectionHtml(state) {
+      const participants = state.participants || [];
+      const viewerMode = hasViewerLink();
+      const comments = (state.comments && state.comments.length) ? state.comments : (!participants.length ? previewComments : []);
+      const visibleComments = comments.slice(0, 3);
+      const hiddenComments = comments.slice(3);
+      const commentParticipants = participants.length ? participants : previewParticipants.map((name, index) => ({
+        id: `preview-comment-${index}`,
+        name,
+        preview: true,
+      }));
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="split">
+              <div>
+                <h2 class="section-title">Crew Feed</h2>
+                <p class="section-copy">${!identitySelected() && participants.length ? "W√§hle oben zuerst deinen Namen. Dann laufen Kommentare sauber unter deinem Profil." : "Kurze Kommentare, Absprachen und Running Gags f√ºr den Abend."}</p>
+              </div>
+              <div class="pills">
+                <span class="chip">${comments.length} Eintr√§ge</span>
+              </div>
+            </div>
+
+            <form class="comment-form" data-form="add-comment">
+              ${viewerMode && !isViewerHost() ? `
+                <div class="pills"><span class="chip live">${escapeHtml(stateStore.viewerParticipantName || "Du")} kommentiert gerade</span></div>
+              ` : `
+              <div class="ballot-tabs">
+                ${commentParticipants.map((participant) => `
+                  <button class="tab-btn ${participant.id === stateStore.activeCommentParticipantId || (!stateStore.activeCommentParticipantId && participant.preview && participant.name === "Marius") ? "active" : ""}" data-action="select-comment-participant" data-participant-id="${escapeHtml(participant.id)}" type="button" ${participant.preview ? "disabled" : ""}>
+                    ${escapeHtml(participant.name)}
+                  </button>
+                `).join("")}
+              </div>
+              `}
+              <input type="hidden" name="participantId" value="${escapeHtml(stateStore.activeCommentParticipantId || "")}" />
+              <input class="field" type="text" name="text" maxlength="280" placeholder="z. B. Ich bringe Popcorn und heute bitte nichts mit 170 Minuten Laufzeit." required ${participants.length && identitySelected() ? "" : "disabled"} />
+              <div class="toolbar">
+                <button class="btn btn-primary" type="submit" ${isBusy("comment") || !participants.length || !identitySelected() ? "disabled" : ""}>
+                  ${isBusy("comment") ? "Sende..." : "Kommentar posten"}
+                </button>
+              </div>
+            </form>
+
+            ${comments.length ? `
+              <div class="comment-grid">
+                ${visibleComments.map((entry) => `
+                  <article class="comment-card">
+                    <strong>${escapeHtml(entry.participantName || "Crew")}</strong>
+                    <p>${escapeHtml(entry.text)}</p>
+                    <div class="comment-meta">
+                      <span>${escapeHtml(formatDate(entry.createdAt))}</span>
+                      ${entry.sessionId ? `<span>zur aktiven Session</span>` : `<span>allgemeiner Crew-Eintrag</span>`}
+                    </div>
+                  </article>
+                `).join("")}
+              </div>
+              ${hiddenComments.length ? `
+                <details class="list-more">
+                  <summary>${hiddenComments.length} weitere Kommentare anzeigen</summary>
+                  <div class="comment-grid">
+                    ${hiddenComments.map((entry) => `
+                      <article class="comment-card">
+                        <strong>${escapeHtml(entry.participantName || "Crew")}</strong>
+                        <p>${escapeHtml(entry.text)}</p>
+                        <div class="comment-meta">
+                          <span>${escapeHtml(formatDate(entry.createdAt))}</span>
+                          ${entry.sessionId ? `<span>zur aktiven Session</span>` : `<span>allgemeiner Crew-Eintrag</span>`}
+                        </div>
+                      </article>
+                    `).join("")}
+                  </div>
+                </details>
+              ` : ""}
+            ` : `<div class="empty" style="margin-top: 18px;">Noch kein Kommentar im Feed. Genau hier d√ºrfen die kleinen Filmabend-Kommentare wohnen.</div>`}
+          </div>
+        </section>
+      `;
+    }
+
+    function watchlistSectionHtml(state) {
+      const watchlist = state.watchlist || [];
+      const movieCount = watchlist.filter((film) => film.type === "movie").length;
+      const canAdd = identitySelected();
+      const visibleItems = watchlist.slice(0, 6);
+      const hiddenItems = watchlist.slice(6);
+      const watchlistCards = (items) => items.map((film) => `
+        <article class="watch-row">
+          <div>
+            <strong>${escapeHtml(film.title)}</strong>
+            <p>${escapeHtml(film.serviceLabel)}${film.rt && film.rt.percent ? ` ¬∑ ${escapeHtml(film.rt.percent)}% RT` : ""}</p>
+            <details>
+              <summary class="watch-detail-toggle">Trailer & Kritiken</summary>
+              <div class="watch-detail-panel">
+                <p>Direkt zum Trailer oder zu Rotten Tomatoes.</p>
+                <div class="watch-links">
+                  <a class="watch-link" href="${escapeHtml(youtubeTrailerUrl(film.title))}" target="_blank" rel="noreferrer">Trailer</a>
+                  <a class="watch-link" href="${escapeHtml(rottenTomatoesUrl(film))}" target="_blank" rel="noreferrer">Rotten Tomatoes</a>
+                  ${film.url ? `<a class="watch-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">Streaming-Link</a>` : ""}
+                </div>
+              </div>
+            </details>
+          </div>
+          <div class="reaction-row">
+            ${isViewerHost() ? `<button class="reaction-btn dislike" data-action="delete-watchlist-item" data-film-id="${escapeHtml(film.id)}" type="button">Entfernen</button>` : ""}
+          </div>
+        </article>
+      `).join("");
+
+      return `
+        <section class="card">
+          <div class="card-inner">
+            <div class="watchlist-header">
+              <div>
+                <h2 class="section-title">Gemeinsame Watchlist</h2>
+                <p class="section-copy">${!canAdd && watchlist.length ? "Das ist euer offener Pool f√ºr die Movie Night. Zum Hinzuf√ºgen w√§hlst du oben erst deinen Namen oder trittst als Gast bei." : "Das ist euer offener Pool f√ºr die Movie Night. Jeder kann Titel hinzuf√ºgen, Trailer √∂ffnen oder Kritiken checken."}</p>
+              </div>
+              <div class="pills">
+                <span class="chip">${watchlist.length} Titel</span>
+                <span class="chip">${movieCount} bereit f√ºr heute</span>
+              </div>
+            </div>
+
+            <form class="add-film-form" data-form="add-film">
+              <input class="field field-inline" type="text" name="title" placeholder="Einfach Filmtitel eingeben, z. B. Interstellar" required ${canAdd ? "" : "disabled"} />
+              <button class="btn btn-primary" type="submit" ${isBusy("add-film") || !canAdd ? "disabled" : ""}>
+                ${isBusy("add-film") ? "Speichere..." : "Titel hinzuf√ºgen"}
+              </button>
+            </form>
+
+            <div class="watchlist-grid">
+              ${watchlistCards(visibleItems)}
+            </div>
+            ${hiddenItems.length ? `
+              <details class="list-more">
+                <summary>${hiddenItems.length} weitere Titel anzeigen</summary>
+                <div class="watchlist-grid">
+                  ${watchlistCards(hiddenItems)}
+                </div>
+              </details>
+            ` : ""}
+          </div>
+        </section>
+      `;
+    }
+
+    function historySectionHtml(state) {
+      const participants = state.participants || [];
+      const history = (state.sessionHistory && state.sessionHistory.length) ? state.sessionHistory : [];
+      const visibleHistory = history.slice(0, 3);
+      const hiddenHistory = history.slice(3);
+      if (!history.length) {
+        return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Letzte Sneak-Nights</h2>
+              <div class="empty">Sobald du die erste Session archiviert hast, tauchen hier die letzten Abende mit Teilnehmern und Gewinnerfilm auf.</div>
+            </div>
+          </section>
+        `;
+      }
+      return `
+          <section class="card">
+            <div class="card-inner">
+              <h2 class="section-title">Letzte Sneak-Nights</h2>
+              <p class="section-copy">Ein kurzer Blick zur√ºck auf die letzten Gewinner.</p>
+              <div class="history-grid" style="margin-top: 16px;">
+                ${visibleHistory.map((entry) => `
+                  <article class="history-card">
+                  <strong>${entry.winner ? escapeHtml(entry.winner.title) : "Noch ohne Sieger"}</strong>
+                  <span>${escapeHtml(entry.attendees.join(", "))}</span>
+                  <span>${entry.winner ? escapeHtml(entry.winner.serviceLabel) : "Archivierte Session"}</span>
+                  <span>${escapeHtml(entry.scheduledFor ? formatSessionDate(entry.scheduledFor) : formatDate(entry.createdAt))}</span>
+                </article>
+              `).join("")}
+            </div>
+            ${hiddenHistory.length ? `
+              <details class="list-more">
+                <summary>${hiddenHistory.length} weitere Abende anzeigen</summary>
+                <div class="history-grid">
+                  ${hiddenHistory.map((entry) => `
+                    <article class="history-card">
+                      <strong>${entry.winner ? escapeHtml(entry.winner.title) : "Noch ohne Sieger"}</strong>
+                      <span>${escapeHtml(entry.attendees.join(", "))}</span>
+                      <span>${entry.winner ? escapeHtml(entry.winner.serviceLabel) : "Archivierte Session"}</span>
+                      <span>${escapeHtml(entry.scheduledFor ? formatSessionDate(entry.scheduledFor) : formatDate(entry.createdAt))}</span>
+                    </article>
+                  `).join("")}
+                </div>
+              </details>
+            ` : ""}
+          </div>
+        </section>
+      `;
+    }
+
+    function render() {
+      const state = stateStore.state;
+      if (!state) {
+        app.innerHTML = `
+          <section class="hero">
+            <div class="eyebrow">Group Film Night</div>
+            <h1>Lade Daten...</h1>
+            <p class="sub">Der lokale State f√ºr Watchlist, Teilnehmer und Session wird gerade geladen.</p>
+            <div class="notice show" id="notice">Falls das h√§ngen bleibt, pr√ºfe bitte den lokalen Python-Server.</div>
+          </section>
+        `;
+        return;
+      }
+      app.innerHTML = `
+        ${heroHtml(state)}
+        ${identityEntrySectionHtml(state)}
+        ${insightStripHtml(state)}
+        <div class="priority-stack">
+          <div class="stack">
+            ${launchGuideSectionHtml(state)}
+            ${snackSectionHtml(state)}
+            ${participantSectionHtml(state)}
+            ${joinLinksSectionHtml(state)}
+            ${sessionSectionHtml(state)}
+            ${watchlistSectionHtml(state)}
+            ${tasteSectionHtml(state)}
+          </div>
+          <div class="stack">
+            ${crewSectionHtml(state)}
+          </div>
+        </div>
+        <div class="footer-grid">
+          <div class="stack">
+            ${commentsSectionHtml(state)}
+          </div>
+          <div class="stack">
+            ${historySectionHtml(state)}
+          </div>
+        </div>
+      `;
+    }
+
+    document.addEventListener("click", async (event) => {
+      const target = event.target.closest("[data-action]");
+      if (!target) return;
+      const action = target.dataset.action;
+      try {
+        if (action === "import-watchlist") {
+          await postJson("/api/watchlist/import", {}, "import");
+          return;
+        }
+        if (action === "copy-link") {
+          const copyPath = target.dataset.copyPath || "/";
+          const value = new URL(copyPath, window.location.origin).toString();
+          await navigator.clipboard.writeText(value);
+          showNotice("Pers√∂nlicher Link wurde in die Zwischenablage kopiert.");
+          return;
+        }
+        if (action === "copy-all-links") {
+          const state = stateStore.state || {};
+          const links = (state.joinLinks || []).map((entry) =>
+            `${entry.participantName}: ${new URL(entry.path, window.location.origin).toString()}`
+          );
+          if (!links.length) {
+            showNotice("Aktuell sind keine pers√∂nlichen Links verf√ºgbar.");
+            return;
+          }
+          await navigator.clipboard.writeText(links.join("\n"));
+          showNotice("Alle pers√∂nlichen Links wurden in die Zwischenablage kopiert.");
+          return;
+        }
+        if (action === "open-profile") {
+          const path = target.dataset.copyPath || "/";
+          window.location.href = path;
+          return;
+        }
+        if (action === "switch-profile") {
+          window.location.href = window.location.pathname;
+          return;
+        }
+        if (action === "seed-crew") {
+          await seedStarterCrew();
+          return;
+        }
+        if (action === "create-session") {
+          await postJson("/api/session/create", {
+            attendeeIds: stateStore.attendeeIds,
+            scheduledFor: stateStore.sessionPlannedFor || defaultSessionDate(),
+          }, "session-create");
+          return;
+        }
+        if (action === "reveal-next") {
+          await postJson("/api/session/reveal-next", {}, "reveal");
+          return;
+        }
+        if (action === "reset-reveal") {
+          await postJson("/api/session/reset-reveal", {}, "reveal-reset");
+          return;
+        }
+        if (action === "reset-session") {
+          if (!window.confirm("Aktuelle Session archivieren und eine neue Session erlauben?")) {
+            return;
+          }
+          await postJson("/api/session/reset", {}, "reset");
+          return;
+        }
+        if (action === "select-participant") {
+          stateStore.activeParticipantId = target.dataset.participantId;
+          render();
+          return;
+        }
+        if (action === "select-snack-participant") {
+          stateStore.activeSnackParticipantId = target.dataset.participantId;
+          render();
+          return;
+        }
+        if (action === "select-comment-participant") {
+          stateStore.activeCommentParticipantId = target.dataset.participantId;
+          render();
+          return;
+        }
+        if (action === "set-reaction") {
+          await postJson("/api/preferences", {
+            participantId: target.dataset.participantId,
+            filmId: target.dataset.filmId,
+            reaction: target.dataset.reaction,
+          }, "preference");
+          return;
+        }
+        if (action === "toggle-snack") {
+          await postJson("/api/session/snacks", {
+            participantId: target.dataset.participantId,
+            snackId: target.dataset.snackId,
+          }, "snack");
+          return;
+        }
+        if (action === "delete-watchlist-item") {
+          if (!window.confirm("Diesen Film wirklich aus der Watchlist entfernen?")) {
+            return;
+          }
+          await postJson("/api/watchlist/delete", {
+            filmId: target.dataset.filmId,
+          }, "watchlist-delete");
+          return;
+        }
+      } catch (error) {
+        showNotice(error.message || "Aktion fehlgeschlagen.");
+      }
+    });
+
+    document.addEventListener("change", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement)) return;
+      if (target.name === "scheduledFor") {
+        stateStore.sessionPlannedFor = target.value || defaultSessionDate();
+        return;
+      }
+      if (target.dataset.role !== "attendee-toggle") return;
+      const participantId = target.dataset.participantId;
+      if (!participantId) return;
+      if (target.checked) {
+        if (!stateStore.attendeeIds.includes(participantId)) {
+          stateStore.attendeeIds.push(participantId);
+        }
+      } else {
+        stateStore.attendeeIds = stateStore.attendeeIds.filter((id) => id !== participantId);
+      }
+      render();
+    });
+
+    document.addEventListener("submit", async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      event.preventDefault();
+      try {
+        if (form.dataset.form === "add-participant") {
+          const formData = new FormData(form);
+          const name = String(formData.get("name") || "").trim();
+          if (!name) throw new Error("Bitte einen Namen eingeben.");
+          await postJson("/api/participants", { name }, "participant");
+          form.reset();
+          return;
+        }
+        if (form.dataset.form === "self-join") {
+          const formData = new FormData(form);
+          const name = String(formData.get("name") || "").trim();
+          const membership = String(formData.get("membership") || "guest").trim();
+          if (!name) throw new Error("Bitte einen Namen eingeben.");
+          const data = await postJson("/api/participants", { name, membership, selfServe: true }, "self-join");
+          if (data.joinPath) {
+            window.location.href = data.joinPath;
+          }
+          return;
+        }
+        if (form.dataset.form === "create-session") {
+          const formData = new FormData(form);
+          const scheduledFor = String(formData.get("scheduledFor") || stateStore.sessionPlannedFor || defaultSessionDate()).trim();
+          stateStore.sessionPlannedFor = scheduledFor;
+          await postJson("/api/session/create", {
+            attendeeIds: stateStore.attendeeIds,
+            scheduledFor,
+          }, "session-create");
+          return;
+        }
+        if (form.dataset.form === "add-film") {
+          const formData = new FormData(form);
+          await postJson("/api/watchlist/add", {
+            title: String(formData.get("title") || "").trim(),
+            service: "manual",
+            type: "movie",
+            url: "",
+          }, "add-film");
+          form.reset();
+          return;
+        }
+        if (form.dataset.form === "add-comment") {
+          const formData = new FormData(form);
+          await postJson("/api/comments", {
+            participantId: String(formData.get("participantId") || stateStore.activeCommentParticipantId || "").trim(),
+            text: String(formData.get("text") || "").trim(),
+          }, "comment");
+          form.reset();
+          return;
+        }
+      } catch (error) {
+        showNotice(error.message || "Aktion fehlgeschlagen.");
+      }
+    });
+
+    loadState();
+  </script>
+</body>
+</html>
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 44%, var(--bg-0) 100%);
+      background-attachment: fixed;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,0.04), transparent 20%),
+        linear-gradient(315deg, rgba(255,255,255,0.03), transparent 22%);
+      opacity: 0.75;
+    }
+    button, input, select {
+      font: inherit;
+    }
+    .shell {
+      position: relative;
+      width: min(1180px, calc(100vw - 24px));
+      margin: 0 auto;
+      padding: 16px 0 36px;
+    }
+    .hero, .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px) saturate(115%);
+    }
+    .hero {
+      padding: 26px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero-preview {
+      position: relative;
+      min-height: 320px;
+      border-radius: calc(var(--radius-xl) - 6px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 244, 228, 0.12);
+      background:
+        linear-gradient(180deg, rgba(8, 6, 6, 0.12), rgba(8, 6, 6, 0.86)),
+        radial-gradient(circle at top, rgba(240, 196, 125, 0.16), transparent 44%),
+        rgba(255, 244, 228, 0.04);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .hero-preview.poster-mode {
+      min-height: 540px;
+      align-items: stretch;
+      background: #09070a;
+    }
+    .hero-preview::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 9, 9, 0.08), rgba(15, 9, 9, 0.92));
+    }
+    .hero-preview.poster-mode::before {
+      background:
+        linear-gradient(180deg, rgba(10, 7, 7, 0.01), rgba(10, 7, 7, 0.08) 34%, rgba(10, 7, 7, 0.24) 100%);
+    }
+    .hero-preview.has-art {
+      background:
+        linear-gradient(180deg, rgba(8, 6, 6, 0.08), rgba(8, 6, 6, 0.88)),
+        radial-gradient(circle at top, rgba(240, 196, 125, 0.18), transparent 42%),
+        rgba(255, 244, 228, 0.04);
+    }
+    .hero-poster-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 12%;
+    }
+    .poster-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hero-cast {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-cast::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 44%;
+      background: linear-gradient(180deg, rgba(10,7,7,0), rgba(10,7,7,0.95));
+    }
+    .hero-portrait {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 244, 228, 0.18);
+      background:
+        radial-gradient(circle at top, rgba(139, 199, 255, 0.16), transparent 42%),
+        rgba(255, 244, 228, 0.04);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-portrait.main-left {
+      width: 42%;
+      height: 78%;
+      left: 6%;
+      bottom: -2%;
+      z-index: 2;
+    }
+    .hero-portrait.main-right {
+      width: 38%;
+      height: 70%;
+      right: 10%;
+      bottom: 2%;
+      z-index: 2;
+    }
+    .hero-portrait.support-left {
+      width: 24%;
+      height: 42%;
+      left: -4%;
+      top: 16%;
+      z-index: 1;
+      transform: rotate(-4deg);
+    }
+    .hero-portrait.support-right {
+      width: 24%;
+      height: 42%;
+      right: -3%;
+      top: 10%;
+      z-index: 1;
+      transform: rotate(4deg);
+    }
+    .hero-orbit {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 72% 26%, rgba(255, 255, 255, 0.18), transparent 12%),
+        radial-gradient(circle at 74% 18%, rgba(240, 196, 125, 0.26), transparent 20%),
+        radial-gradient(circle at 20% 18%, rgba(139, 199, 255, 0.18), transparent 18%);
+      opacity: 0.95;
+    }
+    .hero-orbit::before,
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+    }
+    .hero-orbit::before {
+      width: 180px;
+      height: 180px;
+      top: 10%;
+      right: 12%;
+      background: radial-gradient(circle, rgba(255,255,255,0.30), rgba(255,255,255,0.02) 62%, transparent 70%);
+    }
+    .hero-orbit::after {
+      width: 340px;
+      height: 2px;
+      top: 24%;
+      left: 20%;
+      background: linear-gradient(90deg, rgba(139, 199, 255, 0), rgba(139, 199, 255, 0.72), rgba(139, 199, 255, 0));
+      transform: rotate(-17deg);
+    }
+    .hero::after, .card::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      pointer-events: none;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.05), rgba(255,255,255,0.14));
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.55;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 196, 125, 0.24);
+      background: rgba(255, 244, 228, 0.06);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+    h1 {
+      margin: 18px 0 12px;
+      max-width: 780px;
+      font-size: clamp(40px, 6.8vw, 78px);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+    .sub {
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .toolbar, .pills, .attendees, .reaction-row, .ballot-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .toolbar {
+      margin-top: 22px;
+    }
+    .btn, .chip, .tab-btn, .reaction-btn, .vote-status {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.06);
+      color: var(--ink);
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+    .btn, .tab-btn {
+      appearance: none;
+      padding: 12px 18px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .btn:hover, .tab-btn:hover, .reaction-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 244, 228, 0.26);
+    }
+    .btn-primary {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05)),
+        linear-gradient(135deg, rgba(240,196,125,0.32), rgba(224,93,82,0.18));
+      color: #fff7ef;
+    }
+    .btn-ghost {
+      background: rgba(255, 244, 228, 0.04);
+      color: var(--muted);
+    }
+    .btn[disabled] {
+      opacity: 0.6;
+      cursor: progress;
+      transform: none;
+    }
+    .stats {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.05);
+    }
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+    }
+    .insight-strip {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .insight-card {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(255, 244, 228, 0.04);
+      box-shadow: var(--shadow);
+    }
+    .insight-card .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+    .insight-card strong {
+      display: block;
+      margin-top: 14px;
+      font-size: 24px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+    .insight-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .stage-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .stage-step {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.04);
+    }
+    .stage-step strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .stage-step span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .stage-step.active {
+      border-color: rgba(240, 196, 125, 0.28);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(240, 196, 125, 0.08);
+    }
+    .stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .full-stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .priority-stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.88fr);
+    }
+    .card {
+      border-radius: var(--radius-xl);
+    }
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px;
+    }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 58ch;
+    }
+    .split {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip.good { color: #dff6e8; border-color: rgba(126, 214, 164, 0.28); }
+    .chip.warn { color: #ffe1c7; border-color: rgba(240, 196, 125, 0.30); }
+    .chip.live { color: #ffd6d3; border-color: rgba(224, 93, 82, 0.28); }
+    .notice {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(224, 93, 82, 0.36);
+      background: rgba(224, 93, 82, 0.12);
+      color: #ffe4e1;
+      line-height: 1.45;
+    }
+    .notice.show { display: block; }
+    .participant-grid, .candidate-grid, .watchlist-grid, .history-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .legend-grid, .member-grid, .host-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .participant-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .candidate-grid {
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    }
+    .history-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .legend-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 18px;
+    }
+    .host-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+    .member-grid {
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      margin-top: 18px;
+    }
+    .participant-card, .candidate-card, .history-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.05);
+      padding: 16px;
+    }
+    .participant-card.active {
+      border-color: rgba(126, 214, 164, 0.26);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(126, 214, 164, 0.08);
+    }
+    .legend-card, .member-card, .host-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(255, 244, 228, 0.05);
+      overflow: hidden;
+    }
+    .legend-card {
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .legend-card strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+    .legend-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .participant-card label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .participant-card strong, .candidate-card strong, .history-card strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+    .participant-card span, .candidate-card span, .history-card span, .candidate-card p {
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .history-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(255, 244, 228, 0.05);
+    }
+    .history-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -30px -40px auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 196, 125, 0.18), transparent 62%);
+      pointer-events: none;
+    }
+    .history-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .host-card,
+    .member-card {
+      display: grid;
+      min-height: 100%;
+      box-shadow: var(--shadow);
+    }
+    .host-card,
+    .member-card {
+      grid-template-rows: auto 1fr;
+      align-content: start;
+    }
+    .portrait-frame {
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 320px);
+      aspect-ratio: 4 / 5;
+      margin: 16px auto 0;
+      display: block;
+      padding: 0;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top, rgba(139, 199, 255, 0.12), transparent 34%),
+        radial-gradient(circle at bottom, rgba(240, 196, 125, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(8, 12, 22, 0.22), rgba(8, 12, 22, 0.96));
+    }
+    .portrait-frame.contained {
+      padding: 0;
+    }
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 42%;
+      background: linear-gradient(180deg, rgba(10, 7, 10, 0), rgba(10, 7, 10, 0.7));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      inset: auto -36px -50px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 65%);
+      pointer-events: none;
+    }
+    .portrait-fix {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .portrait-fix.top-right-soft {
+      top: 0;
+      right: 0;
+      width: 84px;
+      height: 84px;
+      background:
+        radial-gradient(circle at top right, rgba(8, 12, 20, 0.98) 0 24px, rgba(8, 12, 20, 0.88) 25px, transparent 58px);
+    }
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      transform: none;
+      transform-origin: center center;
+      filter: saturate(1.02) contrast(1.03);
+    }
+    .portrait-frame.contained img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform-origin: center center;
+      filter: saturate(1.02) contrast(1.03);
+    }
+    .host-card .portrait-frame.contained {
+      padding: 0;
+    }
+    .host-card .portrait-frame.contained img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform-origin: center center;
+      filter: saturate(1.02) contrast(1.03);
+    }
+    .host-card .portrait-frame img,
+    .member-card .portrait-frame img {
+      border-radius: 0;
+    }
+    .member-body, .host-body {
+      position: relative;
+      padding: 16px 18px 18px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .host-body {
+      justify-content: flex-start;
+    }
+    .member-body strong,
+    .host-body strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+    .host-body strong {
+      font-size: 26px;
+    }
+    .member-body p,
+    .host-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .member-subline,
+    .host-subline {
+      color: var(--gold-soft);
+      font-size: 13px;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+    }
+    .member-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .member-head > div {
+      min-width: 0;
+    }
+    .member-head .status-tag {
+      justify-self: flex-start;
+    }
+    .role-tag, .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .role-tag {
+      color: var(--gold-soft);
+      background: rgba(240, 196, 125, 0.12);
+    }
+    .status-tag {
+      color: var(--blue);
+      background: rgba(139, 199, 255, 0.11);
+    }
+    .status-tag.host {
+      color: #fff4db;
+      background: rgba(240, 196, 125, 0.16);
+    }
+    .status-tag.warn {
+      color: #ffe1de;
+      background: rgba(224, 93, 82, 0.13);
+    }
+    .member-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .metric-box {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 244, 228, 0.08);
+      background: rgba(255, 244, 228, 0.04);
+    }
+    .metric-box strong {
+      font-size: 22px;
+      line-height: 1;
+    }
+    .metric-box span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .member-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .fact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 244, 228, 0.12);
+      background: rgba(255, 244, 228, 0.04);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .cast-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .cast-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    .cast-stat strong {
+      font-size: 13px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      accent-color: #f0c47d;
+      flex: 0 0 auto;
+    }
+    .mini-form, .add-film-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .session-plan-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .session-plan-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+      gap: 10px;
+    }
+    .session-plan-note {
+      color: var(--muted-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .comment-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .field, .select, .ballot-select {
+      width: 100%;
+      min-width: 140px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.05);
+      color: var(--ink);
+      outline: none;
+    }
+    .field::placeholder {
+      color: var(--muted-soft);
+    }
+    .field-inline {
+      flex: 1 1 190px;
+    }
+    .watchlist-header, .session-summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .session-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(260px, 0.82fr);
+      gap: 16px;
+      margin-bottom: 18px;
+      align-items: start;
+    }
+    .session-primary,
+    .session-sidekick {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(255, 244, 228, 0.05);
+      box-shadow: var(--shadow);
+    }
+    .session-primary {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+    .session-primary::before {
+      content: "";
+      position: absolute;
+      inset: auto -24px -56px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 196, 125, 0.18), transparent 65%);
+      pointer-events: none;
+    }
+    .session-primary > *,
+    .session-sidekick > * {
+      position: relative;
+      z-index: 1;
+    }
+    .session-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+    .session-primary strong,
+    .session-sidekick strong {
+      display: block;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+    }
+    .session-primary p,
+    .session-sidekick p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .session-quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .session-sidekick .pills {
+      margin-top: 14px;
+    }
+    .cast-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .session-stage {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .session-step {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+      min-height: 118px;
+    }
+    .session-step span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+    .session-step strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+    .session-step p {
+      margin: 6px 0 0;
+      font-size: 13px;
+      line-height: 1.42;
+      color: var(--muted);
+    }
+    .session-step.active {
+      border-color: rgba(240, 196, 125, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(240, 196, 125, 0.08);
+    }
+    .session-step.done {
+      border-color: rgba(126, 214, 164, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(126, 214, 164, 0.08);
+    }
+    .snack-grid, .comment-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .snack-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 18px;
+    }
+    .comment-grid {
+      margin-top: 18px;
+    }
+    .snack-card, .comment-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.05);
+      padding: 16px;
+    }
+    .snack-card strong, .comment-card strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+    .snack-card p, .comment-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .snack-card.claimed {
+      border-color: rgba(126, 214, 164, 0.28);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(126, 214, 164, 0.08);
+    }
+    .snack-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+    }
+    .snack-card .btn {
+      margin-top: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+    .comment-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--muted-soft);
+      font-size: 12px;
+    }
+    .candidate-card {
+      min-height: 304px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: cover;
+      background-position: center 14%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: var(--shadow);
+    }
+    .candidate-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10,7,7,0.08), rgba(10,7,7,0.34) 42%, rgba(10,7,7,0.92)),
+        radial-gradient(circle at top, rgba(139, 199, 255, 0.14), transparent 42%);
+    }
+    .candidate-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .candidate-card-content {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(12, 16, 24, 0.58);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+      max-width: 100%;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .rt-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 244, 228, 0.18);
+      background: rgba(255, 244, 228, 0.07);
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .vote-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .vote-status.done {
+      color: #e1f7ea;
+      border-color: rgba(126, 214, 164, 0.26);
+    }
+    .vote-status.pending {
+      color: #ffe4c8;
+      border-color: rgba(240, 196, 125, 0.28);
+    }
+    .tab-btn.active, .reaction-btn.active {
+      border-color: rgba(240, 196, 125, 0.34);
+      background: rgba(240, 196, 125, 0.16);
+      color: #fff5e9;
+    }
+    .ballot-sheet {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.04);
+    }
+    .ballot-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .ballot-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 92px;
+      gap: 10px;
+      align-items: center;
+    }
+    .ballot-row strong {
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .reaction-btn {
+      appearance: none;
+      cursor: pointer;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .reaction-btn.like.active { color: #e3f9ec; border-color: rgba(126, 214, 164, 0.30); }
+    .reaction-btn.dislike.active { color: #ffe1de; border-color: rgba(224, 93, 82, 0.34); }
+    .reaction-btn.seen.active { color: #e8f2ff; border-color: rgba(139, 199, 255, 0.32); }
+    .watchlist-grid {
+      grid-template-columns: 1fr;
+      margin-top: 18px;
+    }
+    .watch-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 15px 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.035);
+    }
+    .watch-row details {
+      grid-column: 1 / -1;
+    }
+    .watch-detail-toggle {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--gold-soft);
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .watch-detail-toggle::-webkit-details-marker {
+      display: none;
+    }
+    .watch-detail-panel {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .list-more {
+      margin-top: 14px;
+    }
+    .list-more summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+    .list-more summary::-webkit-details-marker {
+      display: none;
+    }
+    .list-more .watchlist-grid {
+      margin-top: 14px;
+    }
+    .list-more .comment-grid,
+    .list-more .history-grid {
+      margin-top: 14px;
+    }
+    .watch-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .watch-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 244, 228, 0.06);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .watch-row strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+    .watch-row p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    }
+    .launch-guide {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .identity-shell {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    }
+    .identity-card {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow: var(--shadow);
+    }
+    .identity-card strong {
+      display: block;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+    .identity-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .identity-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      margin-top: 16px;
+    }
+    .identity-person {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 13px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+    }
+    .identity-person strong {
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .identity-person span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .identity-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .identity-inline {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: minmax(0, 1fr) 180px;
+    }
+    .launch-step {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+    }
+    .launch-step .label {
+      margin-bottom: 8px;
+    }
+    .launch-step strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+    .launch-step p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .launch-helper {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(227, 186, 114, 0.16);
+      background: rgba(255, 244, 228, 0.05);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .launch-helper strong {
+      color: var(--ink);
+    }
+    .cinema-reveal {
+      position: relative;
+      margin-top: 18px;
+      padding: 26px 18px 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(240, 196, 125, 0.18);
+      background:
+        radial-gradient(circle at center top, rgba(139, 199, 255, 0.12), transparent 26%),
+        linear-gradient(180deg, rgba(11, 14, 24, 0.3), rgba(11, 14, 24, 0.94));
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .cinema-audience {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 34px;
+      height: 44px;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 4% 90%, rgba(8, 9, 14, 0.98) 0 16px, transparent 17px),
+        radial-gradient(circle at 13% 88%, rgba(7, 8, 12, 0.98) 0 18px, transparent 19px),
+        radial-gradient(circle at 23% 92%, rgba(8, 9, 14, 0.98) 0 15px, transparent 16px),
+        radial-gradient(circle at 34% 89%, rgba(7, 8, 12, 0.98) 0 19px, transparent 20px),
+        radial-gradient(circle at 46% 94%, rgba(8, 9, 14, 0.98) 0 16px, transparent 17px),
+        radial-gradient(circle at 58% 90%, rgba(7, 8, 12, 0.98) 0 18px, transparent 19px),
+        radial-gradient(circle at 70% 93%, rgba(8, 9, 14, 0.98) 0 15px, transparent 16px),
+        radial-gradient(circle at 82% 89%, rgba(7, 8, 12, 0.98) 0 18px, transparent 19px),
+        radial-gradient(circle at 94% 92%, rgba(8, 9, 14, 0.98) 0 16px, transparent 17px);
+      opacity: 0.9;
+    }
+    .cinema-reveal::before,
+    .cinema-reveal::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 24px;
+      background:
+        linear-gradient(180deg, rgba(115, 15, 18, 0.92), rgba(70, 8, 10, 0.98));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+      z-index: 1;
+    }
+    .cinema-reveal::before { left: 0; }
+    .cinema-reveal::after { right: 0; }
+    .cinema-proscenium {
+      position: absolute;
+      inset: 0 24px auto;
+      height: 26px;
+      background: linear-gradient(180deg, rgba(99, 12, 16, 0.98), rgba(56, 7, 9, 0.98));
+      z-index: 1;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.05);
+    }
+    .cinema-stage-floor {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 64px;
+      background:
+        linear-gradient(180deg, rgba(7, 8, 12, 0), rgba(7, 8, 12, 0.76)),
+        radial-gradient(circle at center top, rgba(227, 186, 114, 0.14), transparent 52%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .cinema-screen {
+      position: relative;
+      z-index: 2;
+      margin: 18px 22px 0;
+      padding: 24px 20px 18px;
+      min-height: 260px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0.03) 46%, rgba(9,10,15,0.9) 86%),
+        linear-gradient(180deg, rgba(245, 244, 237, 0.95), rgba(220, 229, 241, 0.82) 18%, rgba(28, 36, 48, 0.86) 100%);
+      color: #121723;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.68),
+        0 30px 80px rgba(0, 0, 0, 0.38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .cinema-screen.closed {
+      background:
+        radial-gradient(circle at 50% 14%, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at center, rgba(122, 161, 207, 0.16), rgba(24, 30, 43, 0.86) 58%, rgba(8, 10, 16, 0.98) 100%);
+      color: #eef4ff;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.16),
+        0 30px 80px rgba(0, 0, 0, 0.42);
+    }
+    .cinema-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), transparent 24%, transparent 72%, rgba(0,0,0,0.12)),
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.55), transparent 22%);
+      pointer-events: none;
+    }
+    .cinema-screen.closed::before {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent 18%, transparent 82%, rgba(0,0,0,0.28)),
+        radial-gradient(circle at 50% 8%, rgba(255,255,255,0.48), transparent 14%);
+    }
+    .cinema-screen-content {
+      position: relative;
+      z-index: 1;
+      max-width: 88%;
+    }
+    .cinema-screen-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(18, 23, 35, 0.72);
+    }
+    .cinema-screen-title {
+      margin-top: 10px;
+      font-size: clamp(28px, 5vw, 54px);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      color: #101521;
+      text-wrap: balance;
+    }
+    .cinema-screen.closed .cinema-screen-kicker,
+    .cinema-screen.closed .cinema-screen-title,
+    .cinema-screen.closed .cinema-screen-sub {
+      color: #eef4ff;
+    }
+    .cinema-screen.closed .cinema-screen-kicker {
+      color: rgba(238, 244, 255, 0.76);
+    }
+    .cinema-screen.closed .cinema-screen-sub {
+      color: rgba(238, 244, 255, 0.8);
+    }
+    .cinema-screen.closed .cinema-screen-meta .chip {
+      color: #ecf3ff;
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.1);
+    }
+    .cinema-screen-sub {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(18, 23, 35, 0.78);
+    }
+    .cinema-screen-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .cinema-screen-meta .chip {
+      color: #2a3345;
+      border-color: rgba(18, 23, 35, 0.12);
+      background: rgba(255,255,255,0.46);
+    }
+    .cinema-caption {
+      position: relative;
+      z-index: 2;
+      margin: 16px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .cinema-caption strong {
+      color: var(--ink);
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+    .reveal-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .reveal-card {
+      position: relative;
+      padding: 18px;
+      min-height: 188px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(240, 196, 125, 0.22);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(255, 244, 228, 0.06);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .reveal-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -30px -44px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 196, 125, 0.18), transparent 64%);
+      pointer-events: none;
+    }
+    .reveal-card .place {
+      position: relative;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold-soft);
+    }
+    .reveal-card h3 {
+      margin: 8px 0 6px;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+    .empty {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(255, 244, 228, 0.16);
+      color: var(--muted);
+      line-height: 1.55;
+      background: rgba(255, 244, 228, 0.03);
+    }
+    a.inline-link {
+      color: var(--gold-soft);
+      text-decoration: none;
+    }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .insight-strip,
+      .session-hero {
+        grid-template-columns: 1fr;
+      }
+      .stage-rail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid,
+      .priority-stack {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .launch-guide {
+        grid-template-columns: 1fr;
+      }
+      .identity-shell {
+        grid-template-columns: 1fr;
+      }
+      .host-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100vw - 16px, 1180px);
+        padding: 10px 0 22px;
+      }
+      .split {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .split .pills,
+      .toolbar {
+        width: 100%;
+      }
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .toolbar .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero, .card-inner {
+        padding: 18px;
+      }
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .section-title {
+        font-size: 22px;
+      }
+      .sub {
+        font-size: 15px;
+      }
+      .hero-preview {
+        min-height: 260px;
+      }
+      .hero-preview.poster-mode {
+        min-height: 420px;
+      }
+      .hero-poster-art {
+        object-position: center 10%;
+      }
+      .stage-rail {
+        display: none;
+      }
+      .hero-portrait.support-left,
+      .hero-portrait.support-right {
+        display: none;
+      }
+      .hero-portrait.main-left {
+        width: 48%;
+        height: 72%;
+        left: 4%;
+        bottom: -2%;
+      }
+      .hero-portrait.main-right {
+        width: 42%;
+        height: 62%;
+        right: 6%;
+        bottom: 3%;
+      }
+      .member-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        min-height: 0;
+      }
+      .host-card {
+        grid-template-rows: auto 1fr;
+      }
+      .portrait-frame {
+        width: min(100%, 340px);
+        margin-top: 14px;
+      }
+      .member-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .member-head {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .watch-row, .ballot-row {
+        grid-template-columns: 1fr;
+      }
+      .session-plan-grid {
+        grid-template-columns: 1fr;
+      }
+      .identity-inline {
+        grid-template-columns: 1fr;
+      }
+      .identity-grid {
+        grid-template-columns: 1fr;
+      }
+      .candidate-grid, .participant-grid, .history-grid, .legend-grid, .host-grid {
+        grid-template-columns: 1fr;
+      }
+      .member-grid {
+        grid-template-columns: 1fr;
+      }
+      .participant-grid {
+        grid-template-columns: 1fr;
+      }
+      .ballot-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+      }
+      .tab-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .snack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .insight-strip {
+        gap: 10px;
+      }
+      .insight-card {
+        padding: 16px;
+      }
+      .member-metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .member-body strong,
+      .host-body strong {
+        font-size: 22px;
+      }
+      .cast-stats {
+        gap: 6px;
+      }
+      .cast-stat {
+        padding: 8px 10px;
+      }
+      .candidate-card {
+        min-height: 268px;
+      }
+      .candidate-card-content {
+        padding: 14px;
+        max-width: 100%;
+      }
+      .session-primary strong,
+      .session-sidekick strong {
+        font-size: 24px;
+      }
+      .session-stage {
+        grid-template-columns: 1fr;
+      }
+      .cinema-reveal {
+        padding: 20px 12px 14px;
+      }
+      .cinema-reveal::before,
+      .cinema-reveal::after {
+        width: 14px;
+      }
+      .cinema-proscenium {
+        inset: 0 14px auto;
+        height: 18px;
+      }
+      .cinema-stage-floor {
+        left: 14px;
+        right: 14px;
+        height: 48px;
+      }
+      .cinema-audience {
+        left: 16px;
+        right: 16px;
+        bottom: 28px;
+        height: 36px;
+      }
+      .cinema-screen {
+        margin: 14px 10px 0;
+        min-height: 220px;
+        padding: 20px 14px 16px;
+      }
+      .cinema-caption {
+        margin: 14px 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .watch-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .watch-link {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div id="app"></div>
+  </div>
+
+  <script>
+    const stateStore = {
+      state: null,
+      attendeeIds: [],
+      sessionPlannedFor: "",
+      activeParticipantId: null,
+      activeSnackParticipantId: null,
+      activeCommentParticipantId: null,
+      viewerParticipantId: null,
+      viewerParticipantName: "",
+      viewerIsHost: false,
+      busy: new Set(),
+    };
+
+    const app = document.getElementById("app");
+    const finalPosterImage = "/assets/dashboard/final-poster.jpg?v=20260324b";
+    const crewImageVersion = "?v=20260324b";
+    const crewMembers = [
+      {
+        key: "marius",
+        name: "Marius",
+        aliases: ["marius"],
+        role: "Host",
+        arc: "Heroischer Lead",
         bio: "Captain und Initiator der Mission. Marius sorgt dafür, dass das Schiff überhaupt abhebt und der Abend zuverlässig ins Weltall kommt.",
         image: `/assets/dashboard/crew-unified/marius-card.png${crewImageVersion}`,
         portraitPosition: "center bottom",
