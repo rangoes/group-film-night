@@ -96,7 +96,7 @@ def compact_key(value: str) -> str:
     lowered = ascii_value.strip().lower()
     lowered = re.sub(r"\[[^\]]+\]", "", lowered)
     lowered = re.sub(r"\(\d{4}\)", "", lowered)
-    lowered = lowered.replace("’", "").replace("'", "")
+    lowered = lowered.replace("‚Äô", "").replace("'", "")
     lowered = re.sub(r"[^a-z0-9]+", "", lowered)
     return lowered or "item"
 
@@ -598,7 +598,7 @@ def candidate_reason(candidate: Dict[str, Any]) -> str:
     if rt is not None:
         parts.append(f"{rt}% RT")
     parts.append(candidate.get("serviceLabel") or service_label(candidate.get("service", "")))
-    return " · ".join(parts)
+    return " ¬∑ ".join(parts)
 
 
 def shortlist_candidates(state: Dict[str, Any], attendee_ids: List[str], limit: int = 5) -> List[Dict[str, Any]]:
@@ -724,7 +724,7 @@ def create_session(state: Dict[str, Any], attendee_ids: List[str], scheduled_for
             unique_ids.append(attendee_id)
             seen_ids.add(attendee_id)
     if not unique_ids:
-        raise ValueError("Bitte mindestens einen Teilnehmer auswählen.")
+        raise ValueError("Bitte mindestens einen Teilnehmer ausw√§hlen.")
     for attendee_id in unique_ids:
         if not participant_by_id(state, attendee_id):
             raise ValueError(f"Unbekannter Teilnehmer: {attendee_id}")
@@ -818,7 +818,7 @@ def reveal_next(state: Dict[str, Any]) -> Dict[str, Any]:
         raise ValueError("Es gibt aktuell keine aktive Session.")
     ranking = session.get("ranking") or build_auto_ranking(session.get("candidates", []))
     if session.get("revealedCount", 0) >= len(ranking):
-        raise ValueError("Alle Plätze wurden bereits revealed.")
+        raise ValueError("Alle Pl√§tze wurden bereits revealed.")
     session["revealedCount"] = session.get("revealedCount", 0) + 1
     save_state(state)
     return session
@@ -1047,25 +1047,27 @@ def read_json_body(handler: BaseHTTPRequestHandler) -> Dict[str, Any]:
 class GroupFilmNightHandler(BaseHTTPRequestHandler):
     server_version = "GroupFilmNight/0.1"
 
-    def _send_json(self, payload: Dict[str, Any], status: int = HTTPStatus.OK) -> None:
+    def _send_json(self, payload: Dict[str, Any], status: int = HTTPStatus.OK, include_body: bool = True) -> None:
         data = json.dumps(payload, ensure_ascii=True).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(data)
+        if include_body:
+            self.wfile.write(data)
 
-    def _send_html(self, html: str, status: int = HTTPStatus.OK) -> None:
+    def _send_html(self, html: str, status: int = HTTPStatus.OK, include_body: bool = True) -> None:
         data = html.encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
-        self.wfile.write(data)
+        if include_body:
+            self.wfile.write(data)
 
-    def _send_file(self, path: Path, status: int = HTTPStatus.OK) -> None:
+    def _send_file(self, path: Path, status: int = HTTPStatus.OK, include_body: bool = True) -> None:
         data = path.read_bytes()
         content_type = mimetypes.guess_type(str(path))[0] or "application/octet-stream"
         self.send_response(status)
@@ -1073,19 +1075,20 @@ class GroupFilmNightHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "public, max-age=3600")
         self.end_headers()
-        self.wfile.write(data)
+        if include_body:
+            self.wfile.write(data)
 
     def _send_error_json(self, message: str, status: int = HTTPStatus.BAD_REQUEST) -> None:
         self._send_json({"ok": False, "error": message}, status=status)
 
-    def do_GET(self) -> None:
+    def _handle_get_like(self, include_body: bool) -> None:
         parsed = urlparse(self.path)
         viewer_token = (parse_qs(parsed.query).get("viewer") or [""])[0]
         if parsed.path in {"/", "/index.html"}:
             if not DASHBOARD_PATH.exists():
                 self._send_error_json("Dashboard-Datei nicht gefunden.", status=HTTPStatus.NOT_FOUND)
                 return
-            self._send_html(DASHBOARD_PATH.read_text(encoding="utf-8"))
+            self._send_html(DASHBOARD_PATH.read_text(encoding="utf-8"), include_body=include_body)
             return
         if parsed.path.startswith("/assets/"):
             relative = parsed.path.removeprefix("/assets/").strip("/")
@@ -1097,16 +1100,22 @@ class GroupFilmNightHandler(BaseHTTPRequestHandler):
             if not asset_path.exists() or not asset_path.is_file():
                 self._send_error_json("Asset nicht gefunden.", status=HTTPStatus.NOT_FOUND)
                 return
-            self._send_file(asset_path)
+            self._send_file(asset_path, include_body=include_body)
             return
         if parsed.path == "/api/state":
             state = ensure_state()
-            self._send_json({"ok": True, "state": state_payload(state, viewer_token)})
+            self._send_json({"ok": True, "state": state_payload(state, viewer_token)}, include_body=include_body)
             return
         if parsed.path == "/health":
-            self._send_json({"ok": True, "status": "ok"})
+            self._send_json({"ok": True, "status": "ok"}, include_body=include_body)
             return
         self._send_error_json("Nicht gefunden.", status=HTTPStatus.NOT_FOUND)
+
+    def do_GET(self) -> None:
+        self._handle_get_like(include_body=True)
+
+    def do_HEAD(self) -> None:
+        self._handle_get_like(include_body=False)
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
